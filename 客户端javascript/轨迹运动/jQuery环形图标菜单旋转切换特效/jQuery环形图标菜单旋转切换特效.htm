@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>jQuery环形图标菜单旋转切换特效</title>
+
+<link href="feature.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="jquery-2.js"></script>
+
+</head>
+<body>
+
+<div id="test-element" style="overflow: hidden;"><div class="feature-presenter-circle-container feature-presenter-circle-container-1" style="transform: rotate(1019.82deg);"><div class="feature-presenter" data-position="255*-45.53" data-feature-init="1" data-feature="2" data-set="2" style="transform: translate(255px, -45.53px);-webkit-transform: translate(255px, -45.53px);width: 150px;height: 150px;"><img src="jQuery%E7%8E%AF%E5%BD%A2%E5%9B%BE%E6%A0%87%E8%8F%9C%E5%8D%95%E6%97%8B%E8%BD%AC%E5%88%87%E6%8D%A2%E7%89%B9%E6%95%88_files/zzsc1.png" style="transform: rotate(-1019.82deg) scale(0.666667) translateZ(0px); transition: initial; filter: inherit;"></div><div class="feature-presenter" data-position="35*-45.53" data-feature-init="2" data-feature="3" data-set="3" style="transform: translate(35px, -45.53px);-webkit-transform: translate(35px, -45.53px);width: 150px;height: 150px;"><img src="jQuery%E7%8E%AF%E5%BD%A2%E5%9B%BE%E6%A0%87%E8%8F%9C%E5%8D%95%E6%97%8B%E8%BD%AC%E5%88%87%E6%8D%A2%E7%89%B9%E6%95%88_files/zzsc2.png" style="transform: rotate(-1019.82deg) scale(0.666667) translateZ(0px); transition: initial; filter: inherit;"></div><div class="feature-presenter" data-position="-75*145" data-feature-init="3" data-feature="4" data-set="-2" style="transform: translate(-75px, 145px);-webkit-transform: translate(-75px, 145px);width: 150px;height: 150px;"><img src="jQuery%E7%8E%AF%E5%BD%A2%E5%9B%BE%E6%A0%87%E8%8F%9C%E5%8D%95%E6%97%8B%E8%BD%AC%E5%88%87%E6%8D%A2%E7%89%B9%E6%95%88_files/zzsc3.png" style="transform: rotate(-1019.82deg) scale(0.667154) translateZ(0px); transition: initial; filter: inherit;"></div><div class="feature-presenter" data-position="35*335.53" data-feature-init="4" data-feature="5" data-set="-1" style="transform: translate(35px, 335.53px);-webkit-transform: translate(35px, 335.53px);width: 150px;height: 150px;"><img src="jQuery%E7%8E%AF%E5%BD%A2%E5%9B%BE%E6%A0%87%E8%8F%9C%E5%8D%95%E6%97%8B%E8%BD%AC%E5%88%87%E6%8D%A2%E7%89%B9%E6%95%88_files/zzsc4.png" style="transform: rotate(-1019.82deg) scale(0.666667) translateZ(0px); transition: initial; filter: inherit;"></div><div class="feature-presenter feature-presenter-highlighted" data-position="255*335.53" data-feature-init="5" data-feature="6" data-set="0" style="transform: translate(255px, 335.53px);-webkit-transform: translate(255px, 335.53px);width: 150px;height: 150px;"><img src="jQuery%E7%8E%AF%E5%BD%A2%E5%9B%BE%E6%A0%87%E8%8F%9C%E5%8D%95%E6%97%8B%E8%BD%AC%E5%88%87%E6%8D%A2%E7%89%B9%E6%95%88_files/zzsc5.png" style="transform: rotate(-1019.82deg) scale(1) translateZ(0px); transition: initial; filter: inherit;"></div><div class="feature-presenter" data-position="365*145" data-feature-init="6" data-feature="1" data-set="1" style="transform: translate(365px, 145px);-webkit-transform: translate(365px, 145px);width: 150px;height: 150px;"><img src="jQuery%E7%8E%AF%E5%BD%A2%E5%9B%BE%E6%A0%87%E8%8F%9C%E5%8D%95%E6%97%8B%E8%BD%AC%E5%88%87%E6%8D%A2%E7%89%B9%E6%95%88_files/zzsc6.png" style="transform: rotate(-1019.82deg) scale(0.666667) translateZ(0px); transition: initial; filter: inherit;"></div></div><div class="feature-presenter-text-container" style="margin-top: 282.5px; width: 200px;"><div class="feature-presenter-text-heading feature-presenter-text-in-1" style="-webkit-transform:translate(-150%,0);transform:translate(-150%,0);width:160px;font-size:30px">17旋转</div><div class="feature-presenter-text-description feature-presenter-text-in-1" style="-webkit-transform:translate(-150%,0);transform:translate(-150%,0);width:160px;font-size:20px">www.17sucai.com</div></div></div>
+
+<script type="text/javascript" src="feature.js"></script>
+<script type="text/javascript">
+/* 图片地址可以是相对路径或绝对路径；标题和描述可以包含HTML */
+var settings = [ {image: 'zzsc1.png', heading: '17旋转', description: 'www.17sucai.com'}, 
+				{image: 'zzsc2.png', heading: '17旋转', description: 'www.17sucai.com'}, 
+				{image: 'zzsc3.png', heading: '17旋转', description: 'www.17sucai.com'}, 
+				{image: 'zzsc4.png', heading: '17旋转', description: 'www.17sucai.com'}, 
+				{image: 'zzsc5.png', heading: '17旋转', description: 'www.17sucai.com'},
+				{image: 'zzsc6.png', heading: '17旋转', description: 'www.17sucai.com'},
+				{image: 'zzsc6.png', heading: '17旋转', description: 'www.17sucai.com'},
+				{image: 'zzsc6.png', heading: '17旋转', description: 'www.17sucai.com'},
+				{image: 'zzsc6.png', heading: '17旋转', description: 'www.17sucai.com'},
+				{image: 'zzsc6.png', heading: '17旋转', description: 'www.17sucai.com'}
+				];
+
+var options = {
+	circle_radius: 250,
+	normal_feature_size: 100,
+	highlighted_feature_size: 150,
+	top_margin: 100,
+	bottom_margin: 50,
+	spacing: 40,
+	min_padding: 50,
+	heading_font_size: 30,
+	description_font_size: 20,
+	type: 'image'
+};
+
+var fp = new FeaturePresenter($("#test-element"), settings, options);
+fp.createPresenter();
+</script><style id="feature-presenter-animations-1"></style>
+
+
+</body></html>

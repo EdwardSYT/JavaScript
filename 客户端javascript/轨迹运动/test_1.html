@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <title>爱德华_Edward</title>
+        <script src="../../jquery-1.11.2.min.js"></script>
+        <script src="jquery.makeCircle.js"></script>
+        <style>
+            div.levelShift {
+                position:relative;
+                background-color: #05191E;
+                height: 100px;
+                top:200px;
+                left:100px;
+            }
+            div.levelShift div.lsc {
+                position:absolute;
+                background-color:red;
+                color:#ffffff;
+                margin:10px auto;
+                width: 80px;
+                height: 80px;
+                font-size:200%;
+                text-align:center;
+            }
+            div.levelShift span.left {
+                position:absolute;
+                color:red;
+                font-size:200%;
+                top:29px;
+                left:21px;
+                z-index:100;
+            }
+            div.levelShift span.right {
+                position:absolute;
+                color:red;
+                font-size:200%;
+                top:29px;
+                right:12px;
+                z-index:100;
+            }
+        </style>
+    </head>
+    <body>
+
+    <div class="levelShift" id="levelShift">
+        <span class="left" id="left">left</span>
+        <span class="right" id="right">right</span>
+    </div>
+
+    <div class="levelShift" id="levelShift1" style="top:250px">
+        <span class="left" id="left1">left</span>
+        <span class="right" id="right1">right</span>
+    </div>
+
+    <div class="levelShift" id="levelShift2" style="top:300px">
+        <span class="left" id="left2">left</span>
+        <span class="right" id="right2">right</span>
+    </div>
+
+    </body>
+    <script>
+        $(function() {
+
+            var data = [
+                    {id:1,name:"1"},
+                    {id:2,name:"2"},
+                    {id:3,name:"3"},
+                    {id:4,name:"4"},
+                    {id:5,name:"5"},
+                    {id:6,name:"6"},
+                    {id:7,name:"7"},
+                    {id:8,name:"8"},
+                    {id:9,name:"9"},
+                    {id:10,name:"10"}
+                ];
+
+            $.leftOrRightMove(data,"levelShift","left","right",8);
+            $.leftOrRightMove(data,"levelShift1","left1","right1",8);
+            $.leftOrRightMove(data,"levelShift2","left2","right2",8);
+            
+        })
+    </script>
+</html>

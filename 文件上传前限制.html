@@ -1,0 +1,38 @@
+<!--
+FileReader支持到支持到ie10和其他浏览器 
+ActiveXObject支持ie但不支持其他浏览器
+-->
+    <script type="text/javascript">  
+            function bytesToSize(bytes) {
+                if (bytes === 0) return '0 B';
+                var k = 1024, // or 1000
+                    sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+                    i = Math.floor(Math.log(bytes) / Math.log(k));
+
+               return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
+            }
+            function showPreview(source) {  
+                var file = source.files[0];  
+                if(window.FileReader) {  
+                    var fr = new FileReader();  
+                    fr.onloadend = function(e) {  
+                        document.getElementById("portrait").src = e.target.result;  
+                    };  
+                    fr.readAsDataURL(file);  
+                }  
+                __(bytesToSize(file.size));
+            }  
+        </script>  
+      
+    <input type="file" name="file" onchange="showPreview(this)" />  
+                                    <img id="portrait" src="" width="70" height="75">  
+
+<!--<script type="text/javascript">     
+function getFileSize(filePath)     {     
+    var fso = new ActiveXObject("Scripting.FileSystemObject");    
+    alert("文件大小为："+fso.GetFile(filePath).size);     
+}     
+</script>     
+<body>    
+            <INPUT TYPE="file" NAME="file" SIZE="30" onchange="getFileSize(this.value);">    
+</body>-->

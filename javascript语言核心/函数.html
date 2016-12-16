@@ -1,0 +1,204 @@
+<script>
+    /**函数定义
+    var f = function factorial(x) { // 递归函数 累乘
+        console.log(x);
+        if(x <= 1) return 1;
+        return x * factorial(x-1);
+    }
+    console.log(f(5));  
+    console.log(1*2*3*4*5);
+
+    var t1 = (function(x){console.log(x*x);}(5));
+    var t2 = function(x){console.log(x*x);};
+    t2(9);**/
+
+    /**函数调用
+    var a = {
+        a:1,
+        b:2,
+        c:function() {
+            this.u = this.a*this.b;
+            return this.a+this.b;
+        }
+    }
+    a.a=99;
+    console.log(a.c(),a.u);
+    console.log(a["c"](),a["u"]);
+
+    var g = [
+        function(x) {
+            return(x);
+        }
+    ]
+    console.log(g[0](99999));
+
+    function ww() {
+        function tt(){
+            console.log("**");
+        }
+        return {tt:function(){tt()}};
+    }
+    ww().tt();
+
+    var pp = {
+        a:1,
+        b:2,
+        c:3,
+        aa:function() {this.a+=1;return this},
+        bb:function() {this.b+=1;return this},
+        cc:function() {this.c+=1;return this}
+    }
+    console.log(pp.aa().bb().cc());// 方法链
+    console.log(pp.a,pp.b,pp.c);**/
+
+    /**函数的实参和形参
+    function t(a, b, c) {
+        if(arguments.length != 3) {
+            return "错误！";
+        }
+        return arguments[0]+" "+arguments[1]+" "+arguments[2];
+    }
+    console.log(t(1,2),t([1,2,3,4,5],"fs","dd3"));
+
+    (function oo(x) {
+        x = x || 1;
+        if(x>10)return;
+        console.log(x);
+        return x*arguments.callee(x+1); // 调用当前正在执行的函数
+    }(4))
+
+    console.log(isNaN(1),isNaN("@@"),isNaN("9")); // f t f
+**/
+
+    /**作为值的函数
+    function a(x){return x*x};
+    var b = a;
+    console.log(a(2),b(6));
+
+    var o = {square:b};
+    console.log(o.square(16));// 当函数作为对象的属性调用时，函数就称为方法
+
+    var e = [function(x){return x*x;},20];
+    console.log(e[0](e[1]));
+
+    console.log(Math.pow(10,9));// 1000000000
+    **/
+
+    /**自定义函数属性
+    test.counter = 0;
+    function test() {
+        test.counter += 1;        
+    }
+
+    function test1(n) {
+        if(isFinite(n) && n>0 && n==Math.round(n)) {
+            if(!(n in test1)) {
+                test1[n] = n*test1(n-1);
+                return test1[n];
+            } else {
+                return NaN;
+            }
+        }
+    }
+    test1[1] = 1;
+    test1(10);
+    console.log(test1[1]);**/
+
+    /**闭包
+    var scope = "qqq";
+    function test1() {
+        var scope = "www";
+        function f(){return scope;}
+        return f();
+    }
+    console.log(test1());
+
+    function test2() {
+        var scope = "bbb";
+        function f(){return scope;}
+        return f;
+    }
+    console.log(test2()());// 返回函数立即执行
+
+    function cons() {
+        var funcs = [];
+        for(var i=0;i<10;i++) funcs[i] = function(){return i;}
+        return funcs;
+    }
+    var funcs = cons();
+    console.log(funcs[5]());// 任意数都返回10 why? 
+
+    function cons1() {
+        var funcs = [];
+        for(var i=0;i<10;i++) {
+            funcs[i] = function(i){return i;}
+        }
+        return funcs;
+    }
+    var funcs1 = cons1();
+    console.log(funcs1[5](100));// 稍微改动了下
+
+    (function test3(a,b,c){
+        console.log(arguments.length);// 8
+    }(1,3,4,4,6,7,8,9))**/
+
+    /**函数属性、方法和构造函数
+    function check(args) {
+        var a=args.length,b=args.callee.length;// 注意 callee 的使用
+        console.log(a+" "+b);
+        if(a !== b) {
+            throw Error("错误的实参个数");
+        }
+    }
+    function f(x,y,z) {
+        check(arguments);
+        return x+y+z;
+    }
+    console.log(f(1,2,3));
+
+    var t = new Function("x","y","return x*y;");
+    console.log(t(2,5));**/
+
+    /**函数式编程
+    function t1(a,b) {
+        this.a = a;
+        this.b = b;
+    }
+    function t2(a,b,c) {
+        t1.call(this,a,b);// t1.apply(this,arguments);  
+        this.c = c;
+    }
+    var tt = new t2("aa","bb","cc");// 必须要new，否则报错
+    console.log(tt.a,tt.b,tt.c);**/
+
+    /**不完全函数page197**/
+    /**记忆page199**/
+
+    /**继承
+    function extend(o,p) {
+        for(prop in p) {
+            o[prop] = p[prop];
+        }
+        return o;
+    }
+    function Test1(a,b) {
+        this.a = a;
+        this.b = b;
+    }
+    Test1.prototype = {
+        add:function(){return this.a+this.b;}
+    }
+    function test2(a,b,c) {
+        this.c = c;
+        Test1.apply(this,arguments);
+    }
+    var t = new test2(8,9,10);
+    __(t.a,t.b,t.c);
+    var q = new Test1(2,3);
+    __(q.add(),q);
+    q = extend({},q);
+    __(q.add(),q);**/
+    
+
+
+</script>

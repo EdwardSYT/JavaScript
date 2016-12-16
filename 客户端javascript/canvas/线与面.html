@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head lang="zh-CN">
+        <meta charset="UTF-8">
+        <title>爱德华_Edward_线与面</title>
+        <script src="../../jquery-1.11.2.min.js"></script>
+        <style>
+            canvas {
+                border: 1px solid #aaa;
+                display: block;
+                margin: 50px auto; 
+            }
+        </style>
+    </head>
+    <body>
+
+    <canvas id="canvas">当前浏览器不支持Canvas，请更换浏览器后再试</canvas>
+
+    </body>
+    <script>
+    $(function() {
+        var canvas = document.getElementById("canvas");
+        canvas.width = 1024;
+        canvas.height = 768;
+        var context = canvas.getContext("2d");
+
+        context.beginPath();
+        context.moveTo(100,100);
+        context.lineTo(700,700);
+        context.lineTo(100,700);
+        context.lineTo(100,100);
+        context.closePath();
+        
+        // context.fillStyle = "rgb(2,100,30)";
+        // context.fill();// 绘制填充色
+
+        context.lineWidth = 5;
+        context.strokeStyle = "red";
+        context.stroke();// 绘制线条
+        
+        context.beginPath();
+        context.moveTo(200,100);
+        context.lineTo(700,600);
+        context.closePath();
+        context.strokeStyle = "black";
+        context.stroke();
+
+    })
+    </script>
+</html>

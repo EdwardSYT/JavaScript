@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head lang="zh-CN">
+        <meta charset="UTF-8">
+        <title>爱德华_Edward_freeFallAndColisionTest</title>
+        <script src="../../jquery-1.11.2.min.js"></script>
+        <style>
+            canvas {
+                border: 1px solid #aaa;
+                display: block;
+                margin: 50px auto; 
+            }
+        </style>
+    </head>
+    <body>
+
+    <canvas id="canvas">当前浏览器不支持Canvas，请更换浏览器后再试</canvas>
+
+    </body>
+    <script>
+    $(function() {
+
+        var ball = {x:512, y:100, r:20, g:2, vx:-4, vy:-10, color:"#005588"}; // g加速度 vx速度 vy速度
+        var color = ["red","green","blue","yellow"];
+
+        var canvas = document.getElementById("canvas");
+        canvas.width = 1024;
+        canvas.height = 768;
+        var context = canvas.getContext("2d");
+
+        setInterval(function() {
+            render(context);
+            // update();
+            update1();
+        },50);
+
+        function render(cxt) {
+            cxt.clearRect(0,0,cxt.canvas.width,cxt.canvas.height);
+            cxt.fillStyle = ball.color;
+            cxt.beginPath();
+            cxt.arc(ball.x, ball.y, ball.r, 0, 2*Math.PI);
+            cxt.fill();
+        }
+
+        // 自由落体运动
+        function update() {
+            ball.x += ball.vx;
+            ball.y += ball.vy;
+            ball.vy += ball.g;
+
+            if(ball.y >= canvas.height-ball.r) {
+                ball.y = canvas.height-ball.r;
+                ball.vy = -ball.vy*0.75;// 摩擦系数
+            }
+        }
+
+        // 四边碰撞检测
+        function update1() {
+            ball.x += ball.vx;
+            ball.y += ball.vy;
+            // ball.vx += ball.g;
+            // ball.vy += ball.g;
+
+            if(ball.y >= canvas.height-ball.r) {
+                ball.y = canvas.height-ball.r;
+                ball.vy = -ball.vy;
+                ball.color = color[0];
+            }
+
+            if(ball.y <= ball.r) {
+                ball.y = ball.r;
+                ball.vy = -ball.vy;
+                ball.color = color[1];
+            }
+
+            if(ball.x <= ball.r) {
+                ball.x = ball.r;
+                ball.vx = -ball.vx;
+                ball.color = color[2];
+            }
+
+            if(ball.x >= canvas.width-ball.r) {
+                ball.x = canvas.width-ball.r;
+                ball.vx = -ball.vx;
+                ball.color = color[3];
+            }
+        }
+
+    })
+    </script>
+</html>

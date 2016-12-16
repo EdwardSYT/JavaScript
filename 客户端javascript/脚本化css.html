@@ -1,0 +1,158 @@
+<html>
+    <head>
+        <title>爱德华_脚本化CSS</title>
+        <style>
+            ::selection {background:#be0000;color:#fff;}
+            ul#htmlul {
+                margin-left:5%;
+                /*padding-left*/
+                margin-right:80%;
+                /*margin:80px;*/
+                text-indent:.5in;
+                font-weight:bold;
+                font-size:200%;
+                background-color:#fba8a8;
+                border:solid green 3px;
+                border-radius:10px;
+                opacity:.55;/**0-1之间的数字 0.55**/
+            }
+            ul#htmlul li {
+                
+            }
+            div.static{
+                border:2px solid red;
+                position:static;
+                /*position:relative;*/
+                margin:4px 4px 4px 4px;
+            }
+            div.absolute{
+                border:2px solid black;
+                position:absolute;
+                left:25%;
+                top:10%;
+                width:50%;
+                height:10%;
+                margin:4px 4px 4px 4px;
+                /*clip:rect(auto 500px auto auto);*/
+                overflow:auto;
+            }
+            div.fixed{
+                border:2px solid green;
+                border-radius:5px;
+                position:fixed;
+                top:10px;
+                left:100px;
+                right:100px;
+                z-index:-1;
+                margin:4px 4px 4px 4px;
+            }
+            div.relative{
+                border:2px solid blue;
+                background-color:#8cead8;
+                margin:4px 4px 4px 4px;
+            }
+            div.fixedRightbottom{
+                border:2px solid red;
+                border-radius:10px;
+                position:fixed;
+                bottom:100px;
+                right:10px;
+                width:100px;
+                height:20px;
+                z-index:0;/**小于0时a标签会失效**/
+                padding:4px 4px 4px 4px;
+                /*box-sizing:border-box;*//**边框盒模型和box-sizing属性**/
+            }
+            div.border{
+                border:dotted red 3px;
+                border-bottom-right-radius:10px;
+                margin:0px 4px 0px 4px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="static">static</div>
+        <div class="absolute">absolute<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1<br>1</div>
+        <div class="fixed">fixed</div>
+        <div class="relative">relative</div>
+
+        <div class="border">border</div>
+
+        <div class="fixedRightbottom"><a href="#" style="position:absolute;left:15%;">returnTop</a></div>
+        
+        <h1>oo</h1>
+        <p>This is a <i>simple</i> document</p>
+        <ul id="htmlul">
+            <li class="q1">x</li>
+            <li class="q2">xx</li>
+            <li class="q3">xxx</li>
+            <li class="q4">xxxx</li>
+        </ul>
+
+        <span style="text-shadow:3px 3px 1px #888">Shadowed</span>
+        <div style="position:relative;height:20px;background-color:red;">
+            Shadowed
+            <span style="position:absolute;top:10px;left:1px;z-index:-1;color:blue;font-weight:bold;">
+                Shadowed
+            </span>
+        </div>
+        <button onclick="shake(this,fadeOut)">Shake and Fade</button>
+
+        <div style="height:1000px;"></div>
+
+    </body>
+    <script>
+
+        function shake(e, oncomplete, distance, time) {
+            if(typeof e === "string") e = document.getElementById(e);
+            if(!time) time = 500;
+            if(!distance) distance = 5;
+            var originalStyle = e.style.cssText;
+            e.style.position = "relative";
+            var start = (new Date()).getTime();
+            animate();
+            function animate() {
+                var now = (new Date()).getTime();
+                var elapsed = now - start;
+                var fraction = elapsed/time;
+                if(fraction < 1) {
+                    var x = distance * Math.sin(fraction*4*Math.PI);
+                    e.style.left = x + "px";
+                    setTimeout(animate, Math.min(25, time-elapsed));
+                } else {
+                    e.style.cssText = originalStyle;
+                    if(oncomplete) oncomplete(e);
+                }
+            }
+        }
+
+        function fadeOut(e, oncomplete, time) {
+            if(typeof e === "string") e = document.getElementById(e);
+            if(!time) time = 500;
+            var ease = Math.sqrt;
+            var originalStyle = e.style.cssText;
+
+            var start = (new Date()).getTime();
+            animate();
+            function animate() {
+                var elapsed = (new Date()).getTime()-start;
+                var fraction = elapsed/time;
+                if(fraction < 1) {
+                    var opacity = 1 - ease(fraction);
+                    e.style.opacity = String(opacity);
+                    setTimeout(animate, Math.min(25, time-elapsed));
+                } else {
+                    // e.style.opacity = "0";
+                    e.style.cssText = originalStyle;
+                    if(oncomplete) oncomplete(e);
+                }
+            }
+        }
+
+        window.onload = function() {
+
+        }
+
+    </script>
+</html>

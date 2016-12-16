@@ -1,0 +1,56 @@
+<!DOCTYPE html><!-- 这是一个HTML5文件 -->
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>爱德华</title>
+        <style>
+            .r {display:    none;}
+            .rn{display:block;}
+            #clock {
+                font:bold 24pt sans;/*粗体大号字*/
+                background: #ddf;/*蓝灰色背景*/
+                color:black;
+                padding: 10px;/*周围有一圈空白*/
+                border: solid black 2px;/*定义纯黑色边框*/
+                border-radius: 10px;/*定义圆角（如果浏览器支持的话）*/
+            }
+        </style>
+    </head>
+    <body>
+    
+    <a href='javascript:
+        var e = "", r = "";
+        do {
+            e = prompt("Expression:"+e+"\n"+r+"\n",e);
+            try {r="Result:"+eval(e);}
+            catch(ex){r=ex}
+        } while(e);
+        void 0;
+    '>JavaScript Evaluator</a>
+
+    <a href="javascript:void window.open('about:blank')">打开一个新窗口</a>    
+    <div id="div1"><a href="javascript:void(0);">破解</a>这是一个简单的世界！<a href="#" class="r c">破解</a></div>
+
+    <div>
+        <h1>Digital Clock</h1>
+        <span id="clock"></span>
+    </div>
+
+    </body>
+    <script>//<![CDATA[]]>
+    function loadasync(url) {
+
+        var s = document.createElement("script");
+        s.src = url;
+        document.getElementsByTagName("head")[0].appendChild(s);
+    }
+    loadasync("core.js");
+    </script>
+    <!--<script src="core.js">
+        var coreTestVal = "11111"; 
+        alert();指定了src后，这之间所写的代码不会被执行，那么这里面就可以写一些说明文档或版权信息
+    </script>-->
+    <!--[if IE]>
+    <script>alert(0);</script>
+    <![endif]-->
+</html>

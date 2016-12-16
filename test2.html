@@ -1,0 +1,196 @@
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style></style>
+
+<script src="jquery-1.11.2.min.js"></script>
+
+
+</head>
+<body></body>
+    <script>
+//     var x = 0.3 - 0.2;
+//     var y = 0.2 - 0.1;
+//     console.log(x);
+//     console.log(y);
+//     console.log(x == y);
+//     console.log(x == 0.1);
+//     console.log(y == 0.1);
+
+//     console.log("11111\n \v \f \r \" \' \\ ");
+
+//     var s= "hello,world顺序";
+//     console.log(s.indexOf("l",4));
+//     console.log(s.split(","));
+//     console.log(s.replace("h","yt"));
+//     console.log(s.toUpperCase());
+
+//     var test = "",// 加位置符 打乱顺序
+//         test2 = "124702511",
+//         NUM = "ab加位置符打乱顺序cdefghigklmnopqrstuvwxyz";
+//     for (var i = 0; i < test2.length; i++) {
+//         test += test2[i]+NUM[i];
+//     };
+//     console.log(test);
+//     test2 = [];
+//     for (var i = 0; i < test.length; i++) {
+//         if(i%2 == 0) {
+//             test2.push(test[i]+test[i+1]);
+//         }
+//     };
+//     test2.sort(function(){ return 0.5 - Math.random() });
+//     console.log();
+//     var GB2312UnicodeConverter = {  
+//             ToUnicode: function (str) {  
+//                 return escape(str).toLocaleLowerCase().replace(/%u/gi, '\\u');  
+//             }  
+//             , ToGB2312: function (str) {  
+//                 return unescape(str.replace(/\\u/gi, '%u'));  
+//             }  
+//         }; 
+//     test=GB2312UnicodeConverter.ToUnicode(test2.join(""));
+//     console.log(test);
+//     console.log(eval("'" + test + "'"));
+    
+
+//     var hh = "8888888";
+//     function gg() {
+//         console.log(hh);
+//         var hh = "&&&&";
+//         console.log(hh);
+
+//     }
+//     gg();
+
+// console.log("**************************************************************************");
+//     var q1 = "11";
+//     console.log(q1);
+//     delete q1;
+//     console.log(q1);
+// console.log("**************************************************************************");
+//     var ll = 0;
+//     while(true) {
+//         console.log(parseInt(Math.random()*10));
+//         ll++;
+//         if(ll==7)break;
+//     }
+// console.log("**************************************************************************");
+//     var iNum = 18;
+//     console.log(iNum.toString(2));
+//     iNum = iNum.toString(2);
+//     console.log(iNum);
+//     iNum = iNum.toString(18);
+//     console.log(iNum);
+// console.log("**************************************************************************");
+//     var a = 1;
+//     b = (a++)+a;
+//     console.log(a+" "+b);
+
+//     console.log(40/10);
+// console.log("**************************************************************************");
+//     var test1 = {"e":"fdfggdfgsg"};
+//     var test2 = ["fds",3,4,6,77,"ffger"];
+//     console.log("e" in test1);// in 判断有无key或下标（索引）
+//     console.log(6 in test2);
+
+// console.log("**************************************************************************");
+//     var q=1,w=1;
+//     if(q==w)console.log("**");
+//     (q==w)&&console.log("^^");
+
+//     var ii = 0;
+//     console.log(!!ii);
+
+// console.log("**************************************************************************");
+
+//     var ueval = eval,
+//         tt = "q";
+//     function test(){
+//         var tt = "ww";
+//         eval("tt += 'ee'");
+//         // ueval("tt += 'ee'");
+//         return tt;
+//     }
+//     console.log(test(),tt);
+
+// console.log("**************************************************************************");
+// var o = {x:1,y:2};
+// delete o.x;
+// console.log("x" in o);
+// var a = [1,2,3];
+// delete a[2];
+// console.log(2 in a);
+// console.log(a.length);
+
+// console.log("**************************************************************************");
+//     var a = [23,43,5456,4];
+//     for(var i = 0;i < a.length; a[i++] = i)/* empty */;
+//     console.log(a);
+    
+//     var o = [{q:1,w:2},{q:1,w:2}]
+//     for(var i in o) console.log(o[i]);
+// console.log("**************************************************************************");
+// function tail(o) {
+//     for(;o.next;o=o.next)/* empty */;
+//     return o;
+// }
+
+// var y = {q:2,w:4,r:8};
+// var ee = [],i=0;
+// for(ee[i++] in y);
+// console.log(ee);
+
+// console.log("**************************************************************************");
+// var i=0;
+// qqq:while(true) {
+//     console.log(i);
+//     debugger;
+//     if(i==10)break qqq;
+//     i++;
+//     console.log("***");
+// }
+// console.log("**************************************************************************");
+// var o1 = Object.create({x:1,y:2});
+// o1.x = 0;
+// console.log(o1);
+
+// var tt = {
+//     name:"dsf",
+//     sex:1,
+//     age:12
+// }
+
+// console.log(tt);
+// console.log(Object.keys(tt));
+// console.log(Object.getOwnPropertyNames(tt));
+
+// var q=[1,2,3],m=["qw","ew","wwe"];
+// q=q.concat(m);
+// console.log(q);
+
+
+console.log("**************************************************************************");
+var a = {
+    $n:0,
+    get next() { return this.$n++; },
+    set next(n) { 
+        if (n >= this.$n) this.$n = n;
+        else throw "序列号的值不能比当前值小"
+    }
+};
+
+console.log(a.next);
+console.log(a.next);
+console.log(a.next);
+a.next = 7;
+console.log(a.next);
+console.log(a.next);
+
+var rr = "adffgedgxfh";
+console.log(rr);
+console.log(rr.slice(3,-2));
+
+
+    </script>
+</html>
+

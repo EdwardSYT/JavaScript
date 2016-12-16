@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <style>
+            .hilite {
+                color:red;
+            }
+        </style>
+    </head>
+    <body>
+    Hello
+    <button onclick="highlight(this);debug('fsdfsdfsdfsdf');">ttereer</button>
+    World
+    </body>
+    <script>
+    function Point(x,y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    Point.prototype.r = function() {
+        return Math.sqrt(
+            this.x * this.x + 
+            this.y * this.y);
+    }
+
+    Point.prototype.salary=function(){
+        return this.x;
+    };
+
+    var p = new Point(1,1);
+
+    console.log(p.r());
+    console.log(p.salary());
+
+    var test = [1,1];
+    test.r = function() {
+        return Math.sqrt(
+            this[0] * this[0] + 
+            this[1] * this[1]);
+    }
+    console.log(test.r());
+
+    function debug(msg) {
+        var log = document.getElementById("qwqwqw");
+        console.log(log);
+        if(!log) {
+            log = document.createElement("div");
+            log.id = "qwqwqw";
+            log.innerHTML = "<h1 id='ii' class='hilite'>Debug log</h1>";
+            document.body.appendChild(log);
+        }
+        var pre = document.createElement("pre");
+        pre.id = "tt";
+        var text = document.createTextNode(msg);
+        pre.appendChild(text);
+        log.appendChild(pre);
+    }
+    // debug("222222222");
+
+    function hide(e,reflow) {
+        if(reflow) {
+            e.style.display = "none";
+        }else {
+            e.style.visibility = "hidden";
+        }
+    }
+    // hide(document.getElementById("ii"),false);
+
+    function highlight(e) {
+        console.log((e.className)+"*");
+        if(!e.className) {
+            e.className = "hilite";
+        }else {
+            e.className += "hilite";
+        }
+    }
+    // highlight(document.getElementById("ii"));
+    
+    // window.onload = function() {
+    //     var images = document.getElementByTagName("img");
+    //     for (var i = 0; i < images.length; i++) {
+    //         var image = images[i];
+    //         if(image.addEventListener) {
+    //             image.attachEventListener("click",hide,false);
+    //         }else {
+    //             image.attachEvent("onclick",hide);
+    //         }
+    //         function hide(event) {
+    //             event.target.style.vivibility = "hidden";
+    //         }
+    //     };
+    // }
+
+    
+    
+    </script>
+</html>
+

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head lang="zh-CN">
+        <meta charset="UTF-8">
+        <title>爱德华_Edward_圆弧</title>
+        <script src="../../jquery-1.11.2.min.js"></script>
+        <style>
+            canvas {
+                border: 1px solid #aaa;
+                display: block;
+                margin: 50px auto; 
+            }
+        </style>
+    </head>
+    <body>
+
+    <canvas id="canvas">当前浏览器不支持Canvas，请更换浏览器后再试</canvas>
+
+    </body>
+    <script>
+    $(function() {
+        var canvas = document.getElementById("canvas");
+        canvas.width = 1024;
+        canvas.height = 768;
+        var context = canvas.getContext("2d");
+
+        context.lineWidth = 5;
+        context.strokeStyle = "#005588";
+        // 顺时针 0pi 0.5pi 1pi 1.5pi 2pi 
+        //     context.beginPath();
+        // context.arc(300,300,200,0,0.5*Math.PI,true);// 圆心x，圆心y，半径，开始角度，结束角度，默认false顺时针true逆时针
+        //     context.closePath();
+        // context.stroke();
+
+        for (var i = 0; i < 10; i++) {
+            context.beginPath();
+            context.arc(50+i*100,60,40,0,2*Math.PI*(i+1)/10);
+            context.closePath();
+            context.stroke();
+        };
+
+        for (var i = 0; i < 10; i++) {
+            context.beginPath();
+            context.arc(50+i*100,180,40,0,2*Math.PI*(i+1)/10);
+            context.stroke();
+        };
+
+        for (var i = 0; i < 10; i++) {
+            context.beginPath();
+            context.arc(50+i*100,300,40,0,2*Math.PI*(i+1)/10,true);
+            // context.closePath();
+            context.stroke();
+        };
+
+         context.fillStyle = "#005588";
+        for (var i = 0; i < 10; i++) {
+            context.beginPath();
+            context.arc(50+i*100,400,40,0,2*Math.PI*(i+1)/10,true);
+            context.fill();
+        };
+
+    })
+    </script>
+</html>

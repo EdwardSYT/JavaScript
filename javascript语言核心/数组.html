@@ -1,0 +1,228 @@
+<script>
+    /**
+    var t1 = new Array(10);
+    console.log(t1.length);
+    var t2 = new Array(10,1);
+    console.log(t2.length);
+    var t3 = new Array("10");
+    console.log(t3.length);**/
+
+    /**
+    var a1 = ["das","dd","dfad"];
+    a1.ee = "qqq";
+    a1[3] = "xxx";
+    console.log(a1);
+    console.log(a1.length);
+    console.log(a1[3]);
+    var a2 = {};
+    a2[3] = "one";
+    console.log(a2);
+    console.log(a2[3]);**/
+
+    /**稀疏数组
+    var a = new Array(5);
+    a = [];
+    a[1000] = 0;
+    console.log(a.length);
+
+    var a1 = ["2"];
+    console.log(a1.length);**/
+
+    /**数组长度
+    var a = [1,2,3,4,5];
+    a.length = 2;
+    console.log(a);**/
+
+    /**多维数组 九九乘法表 new Array(10)与[10]的区别需要注意
+    var table = new Array(10);
+    for (var i = 0; i < table.length; i++) {
+        table[i] = new Array(10);
+    };
+    for (var row = 0; row < table.length; row++) {
+        for (var col = 0; col < table[row].length; col++) {
+            table[row][col] = row*col;
+        };
+    };
+    console.log(table[5][7]);**/
+
+    /**数组方法
+    var a = [1,2,3,4,5,6,7,8,9,10];
+    console.log(a.join());
+    console.log(a.join(","));
+    console.log(a.join() === a.join(","));
+
+    console.log(a.reverse().join());// 颠倒顺序
+    console.log(a);
+
+    var b = ["banana","cherry","apple",3,5,111111];
+    b.sort();// 字母表排序
+    console.log(b);
+    console.log(b.sort(function(a,b) {// 数字小到大
+        console.log(a+"*"+b);
+        return a-b;
+    }));
+    console.log(b.sort(function(a,b) {// 数字大到小
+        return b-a;
+    }));
+
+    a = ["ant", "Bug", "cat", "Dog"];
+    console.log(a.sort());// 区分大小写的排序
+    console.log(a.sort(function(s,t) {// 不区分大小写的排序
+        var a = s.toLowerCase();// 转为小写
+        var b = t.toLowerCase();
+        if(a<b) return-1;
+        if(a>b) return 1;
+        return 0;
+    }));
+
+    var a = [1,2,3];
+    console.log(a.concat(4, 5));
+    console.log(a.concat([4,5]));
+    console.log(a.concat([4,5],[6,7]));
+    console.log(a.concat(4,[5,[6,7]]));
+
+    var a = [1,2,3,4,5]
+    console.log(a.slice(0,3));// 3不算
+    console.log(a.slice(3));// 3以及之后所有
+    console.log(a.slice(1,-1));// -1指定最后一个元素
+    console.log(a.slice(-3,-2));// -3指定倒数第三个元素
+    console.log(a);// slice不会修改调用的数组
+
+    var a = [1,2,3,4,5,6,7,8];
+    a.splice(4);
+    console.log(a);
+    a.splice(1,2);
+    console.log(a);
+    a.splice(1,1);
+    console.log(a);
+
+    var a = [1,2,3,4,5];
+    a.splice(2,0,"a","b");
+    console.log(a);
+    a.splice(2,2,[1,2],3);
+    console.log(a);
+    console.log(a.join());
+
+    var stack = [];// 数组尾部添加与删除
+    console.log(stack.push(1,2),
+    stack.pop(),
+    stack.push(3),
+    stack.pop(),
+    stack.push([4,5]),
+    stack.pop(),
+    stack.pop());
+
+    var a = [];// 数组开始处添加与删除
+    console.log(a.unshift(1),
+    a.unshift(22),
+    a.shift(),
+    a.unshift(3,[4,5]),
+    a.shift(),
+    a.shift(),
+    a.shift());
+
+    console.log([1,2,3].toString());
+    console.log([1,2,3].toLocaleString());
+    console.log([1,2,3].join());
+    console.log([1,[2,[3]],4].toString());**/
+
+    /**数组方法 ECMAScript 5
+    var data = [1,2,3,4,5];
+    var sum = 0;
+    data.forEach(function(value){sum += value});
+    console.log(sum);
+    data.forEach(function(v, i, a) {
+        console.log(v, i, a);
+        a[i] = v+1;
+        a[a.length] = a.length;
+    });
+    console.log(data);
+
+    function foreach(a,f,t) {
+        try{
+            a.forEach(f,t);
+        }catch(e){
+            if(e === foreach.break) return;
+            else throw e;
+        }   
+    }
+    foreach.break = new Error("StopIteration");
+
+    var a = [1,2,3],b;
+    b = a.map(function(x) {
+        return x*x;
+    });
+    console.log(a);
+    console.log(b);
+
+    var a = [1,2,3,4,5,6,7,8,9,10,2,2,2,2,2,"22d"];
+    console.log(a.filter(function(x) {// 返回小于等于6的数
+        return x<=6;
+    }),
+    a.filter(function(x) {// 返回偶数
+        return x%2==0;
+    }));
+    console.log(a);
+    console.log(a.every(function(x){
+        return x<11;
+    }),
+    a.every(function(x){
+        return x%2===0;
+    }),
+    a.some(function(x){
+        return x%2===0;
+    }),
+    a.some(isNaN));// a是否包含非数值元素
+
+    var b=[];
+    console.log(b.every(isNaN),b.some(isNaN));
+
+    var a = [1,2,3,4,5];
+    console.log(a.reduce(function(x,y){return x+y},0));// 求和 初始值可省略
+    console.log(a.reduce(function(x,y){return x*y},1));// 求积 初始值可省略
+    console.log(a.reduce(function(x,y){return (x>y)?x:y}));// 最大值
+
+    a.reduce(function(x,y) {// reduceRight 从右到左处理数组
+        console.log(x+" "+y);
+        return x+y;
+    },0);// 第二个参数0为初始值,初始值是可以省略的，那么第一次第一个值就是对应了数组的第一个值
+
+    var objects = [{x:1},{y:2},{z:3}];
+    //console.log(objects.reduce(union));//union是一个自定义函数，在书的例子中有，这里提及请参阅159page
+    
+    var a = [0,1,2,1,0];
+    console.log(
+        a.indexOf(1),
+        a.lastIndexOf(1),
+        a.indexOf(3)
+    );
+    function findall(a,x) {
+        var results = [],
+            len = a.length,
+            pos = 0;
+        while(pos < len) {
+            pos = a.indexOf(x,pos);
+            if(pos === -1) break;
+            results.push(pos);
+            pos = pos+1;
+        }
+        return results;
+    }
+    console.log(findall(a,1));**/
+
+    /**数组类型
+    console.log(Array.isArray([]));
+    console.log(Array.isArray({}));
+
+    console.log(Object.prototype.toString.call([]));// 这种写法为ECMAScript3中的判断写法
+    console.log(Object.prototype.toString.call({}));**/
+
+    /**类数组对象**/
+    var a = {"0":"a","1":"b","2":"c",length:3}
+    Array.join(a,"+");
+    Array.slice(a,0);
+    Array.map(a,function(x){return x.toUpperCase();});
+
+
+
+</script>

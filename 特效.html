@@ -1,0 +1,76 @@
+<html>
+
+
+<body style="margin:0; background-color:#33363C; color:#AAB2B8;">
+  <canvas id="foo" width="500" height="500" style="cursor:pointer;position:absolute;">
+  </canvas>
+  <script>
+    function drawStuff(c,lineWidth,w,h){
+      c.lineWidth = lineWidth
+      c.beginPath()
+      c.moveTo(Math.random()*w, Math.random()*h)
+      c.quadraticCurveTo(
+        Math.random()*w,
+        Math.random()*h,
+        Math.random()*w,
+        Math.random()*h)
+      c.stroke()
+    }
+    function drawOtherStuff(c,t){
+      c.lineCap = "round"
+      c.rotate(Math.sin(t/100)*0.2)
+      for (var i=0; i<20; i++){
+        var s = Math.sin(t/1000+i*0.8)
+        var cs = Math.cos(t/1000+i*0.8)
+        c.rotate(Math.sin(t/100)*0.2)
+        var y = 100 - 20*s
+        c.beginPath()
+        var lw = (5-Math.abs(i-5)+1)
+        c.lineWidth = lw
+        x = 100+cs*20-0.75*(5-Math.abs(i-5)+1)
+        c.moveTo(x+lw*0.5,y)
+        c.lineTo(x+lw*0.5, y+8*(5-Math.abs(i-5)+1))
+        c.stroke()
+      }
+    }
+    function noCrash() {
+      var w = document.body.clientWidth
+      var h = document.body.clientHeight
+      var t = new Date().getTime() / 2
+      Foo.ctx.save()
+      Foo.ctx.clearRect(0,0,500,500)
+      Foo.ctx.translate(250,200)
+      Foo.ctx.save()
+        Foo.ctx.rotate(Math.PI/4)
+        drawOtherStuff(Foo.ctx,t)
+      Foo.ctx.restore()
+      Foo.ctx.save()
+        Foo.ctx.scale(-1,1)
+        Foo.ctx.rotate(Math.PI/4)
+        drawOtherStuff(Foo.ctx,t)
+      Foo.ctx.restore()
+      Foo.ctx.restore()
+/*      for(var i=0; i<5; i++)
+        drawStuff(c,Math.random()*2,100,100)*/
+    }
+    function clear() {
+      Foo.ctx.clearRect(0,0,100,100)
+    }
+    var e = document.getElementById("foo")
+    Foo = e
+    Foo.ctx = e.getContext("2d")
+    Foo.ctx.strokeStyle = "#AAB2B8"
+    e.style.left = document.body.clientWidth/2-250
+    e.style.top = document.body.clientHeight/2-250
+    e.addEventListener("click",clear,false)
+    setInterval(noCrash, 30)
+    window.onresize = function(ev){
+      e.style.left = document.body.clientWidth/2-250
+      e.style.top = document.body.clientHeight/2-250
+      noCrash()
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>椭圆轨迹移动</title>
+    <script type="text/javascript" src="../../jquery-1.11.2.min.js"></script>
+    <style type="text/css">
+        .t3 {
+            width:50px;
+            height:20px;
+            border-radius: 20%;
+            background:red;
+            position:absolute;
+            left:20px;
+            top:-90px;
+        }
+        .t2 {
+            width:50px;
+            height:20px;
+            border-radius: 20%;
+            background:red;
+            position:absolute;
+            left:30px;
+            top:-60px;
+        }
+        .t1 {
+            width:50px;
+            height:20px;
+            border-radius: 20%;
+            background:red;
+            position:absolute;
+            left:40px;
+            top:-30px;
+        }
+        .in {
+            width:50px;
+            height:20px;
+            border-radius: 20%;
+            background:red;
+            position:absolute;
+            left:50px;
+            top:0;
+        }
+        .d1 {
+            width:50px;
+            height:20px;
+            border-radius: 20%;
+            background:red;
+            position:absolute;
+            left:40px;
+            top:30px;
+        }
+        .d2 {
+            width:50px;
+            height:20px;
+            border-radius: 20%;
+            background:red;
+            position:absolute;
+            left:30px;
+            top:60px;
+        }
+        .d3 {
+            width:50px;
+            height:20px;
+            border-radius: 20%;
+            background:red;
+            position:absolute;
+            left:20px;
+            top:90px;
+        }
+        #father {
+            margin:300px auto;/*第一个参表示上下距 第二个参表示左右自动居中 如果是4个参就表示上右下左*/
+            width:5px;
+            height:5px;
+            background:green;
+            position:relative;/*相对定位*/
+        }   
+        #box {
+            width:20px;
+            height:20px;
+            border-radius: 50%;
+            background:red;
+            position:absolute;/*绝对定位*/
+            left:0;
+            top:0;
+        }
+    </style>
+    <script type="text/javascript">
+    $(function() {
+        $(".box").each(function(index, el) {
+            var $this = $(this);
+            // $this.m = -300;replace
+            // $this.n = 300;
+            var top = parseInt(($this.css("top")).replace("px",""));
+            var topl = top>0?top=top:top=-top;
+            console.log(top>0?top=top:top=-top);
+            $this.m = top;
+            $this.n = topl;
+            $this.d= topl;
+            $this.x = 0;
+            $this.y = 0;
+            move2($this);
+            // $this.timer = setInterval(function(){move2($this);},100);
+        });
+        function move2(dom) {
+            if(dom.m<=dom.d) {
+                dom.x=dom.m;
+                dom.m+=1;
+                dom.y=Math.sqrt(1-Math.pow(dom.m/dom.d,2))*-dom.d;
+            }else {
+                dom.x=dom.n;
+                dom.n-=1;
+                dom.y=Math.sqrt(1-Math.pow(dom.n/dom.d,2))*dom.d;
+                if(dom.x<-dom.d) {
+                    clearInterval(dom.timer);
+                    dom.m=-dom.d;
+                    dom.n=dom.d;
+                    dom.timer=setInterval(function(){move2(dom);},100);
+                }
+            }
+            // console.log("left:"+dom.x+"px    top:"+parseInt(dom.y)+"px");
+            dom.css("left",dom.x+"px");
+            dom.css("top",parseInt(dom.y)+"px");
+        }
+    })
+    </script>
+</head>
+<body>
+    <div id="father">
+        <div class="box t3">1市</div>
+        <div class="box t2">2市</div>
+        <div class="box t1">3市</div>
+        <div class="box in">市级</div>
+        <div class="box d1">4市</div>
+        <div class="box d2">5市</div>
+        <div class="box d3">6市</div>
+    </div>
+</body>
+</html>

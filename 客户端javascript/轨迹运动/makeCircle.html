@@ -1,0 +1,95 @@
+<html>
+    <head>
+        <title>Edward.T.SY_makeCircle</title>
+        <script src="../../jquery-1.11.2.min.js"></script>
+        <script src="jquery.makeCircle.js"></script>
+        <style>
+            a.top_click {
+                position:relative;
+            }
+            a.down_click {
+                position:relative;
+            }
+            div.ff {
+                margin:10px;
+                float:left;
+            }
+            div.f {
+                position:relative;
+                background-color: #fb8302;
+                width: 400px;
+                height: 400px;
+            }
+            div.f .c {
+                position:absolute;
+                border-radius:5px;
+                width: 40px;
+                background-color: #be0000;
+                color:#ffffff;
+                cursor:pointer;
+            }
+            div.percentCircle {
+                position:relative;
+                background-color: #05191E;
+                width: 200px;
+                height: 200px;
+                top:100px;
+                left:80%;
+            }
+            div.percentCircle div.percentCircleNum {
+                position:absolute;
+                color:#F4821F;
+                top:39%;
+                font-size:200%;
+                text-align:center;
+                width: 204px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="ff">
+            <a href="javascript:void(0);" class="top_click" id="top_click">t o p</a>
+            <div class="f" id="f"></div>
+            <a href="javascript:void(0);" class="down_click" id="down_click">d o w n</a>
+        </div>
+
+        <div class="ff">
+            <a href="javascript:void(0);" class="top_click" id="top_click1">t o p</a>
+            <div class="f" id="f1"></div>
+            <a href="javascript:void(0);" class="down_click" id="down_click1">d o w n</a>
+        </div>
+        
+        <div class="ff">
+            <a href="javascript:void(0);" class="top_click" id="top_click3">t o p</a>
+            <div class="f" id="f3"></div>
+            <a href="javascript:void(0);" class="down_click" id="down_click3">d o w n</a>
+        </div>
+
+        <div class="percentCircle" id="percentCircle"><div class="percentCircleNum"></div></div>
+
+    </body>
+    <script>
+        $(function() {
+
+            var data1=[
+                        {id:11, name:"1市"},
+                        {id:11,name:"2市"},
+                        {id:11,name:"3市"},
+                        {id:11,name:"4市"},
+                        {id:11,name:"5市"},
+                        {id:11,name:"6市"},
+                        {id:11,name:"7市"},
+                        {id:11,name:"8市"},
+                        {id:11,name:"9市"},
+                        {id:11,name:"10市"}
+                    ];
+            $.makeCircle(data1,"f","top_click","down_click",0,190,90);
+            $.makeCircle(data1,"f1","top_click1","down_click1",0,190,150);
+            $.makeCircle(data1,"f3","top_click3","down_click3",0,190,190);
+
+            $.percentCircle(60,"percentCircle",98,95);
+            
+        })
+    </script>
+</html>

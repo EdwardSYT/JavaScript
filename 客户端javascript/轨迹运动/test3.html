@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+div
+{
+width:10px;
+height:10px;
+border-radius:50%;
+background:red;
+position:relative;
+animation-name:myfirst;
+animation-duration:1s;
+animation-timing-function:linear;
+animation-delay:0s;
+animation-iteration-count:infinite;
+animation-direction:alternate;/*alternate normal*/
+animation-play-state:running;
+/* Firefox: */
+-moz-animation-name:myfirst;
+-moz-animation-duration:5s;
+-moz-animation-timing-function:linear;
+-moz-animation-delay:2s;
+-moz-animation-iteration-count:infinite;
+-moz-animation-direction:alternate;
+-moz-animation-play-state:running;
+/* Safari and Chrome:
+-webkit-animation-name:myfirst;
+-webkit-animation-duration:5s;
+-webkit-animation-timing-function:linear;
+-webkit-animation-delay:2s;
+-webkit-animation-iteration-count:infinite;
+-webkit-animation-direction:alternate;
+-webkit-animation-play-state:running; */
+/* Opera: */
+-o-animation-name:myfirst;
+-o-animation-duration:5s;
+-o-animation-timing-function:linear;
+-o-animation-delay:2s;
+-o-animation-iteration-count:infinite;
+-o-animation-direction:alternate;
+-o-animation-play-state:running;
+}
+
+@keyframes myfirst
+{
+0%   {background:red; left:0px; top:250px;width:50px;height:50px;}
+10%  {background:green; left:50px; top:200px;width:50px;height:50px;}
+20%  {background:yellow; left:100px; top:150px;width:50px;height:50px;}
+30%  {background:red; left:150px; top:100px;width:50px;height:50px;}
+40%  {background:yellow; left:200px; top:150px;width:50px;height:50px;}
+50%  {background:blue; left:250px; top:250px;width:50px;height:50px;}
+60%  {background:green; left:200px; top:300px;width:50px;height:50px;}
+70%  {background:blue; left:150px; top:400px;width:50px;height:50px;}
+80%  {background:green; left:100px; top:350px;width:50px;height:50px;}
+90%  {background:yellow; left:50px; top:300px;width:50px;height:50px;}
+100% {background:red; left:0px; top:250px;width:50px;height:50px;}
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+0%   {background:red; left:0px; top:0px;}
+25%  {background:yellow; left:200px; top:0px;}
+50%  {background:blue; left:200px; top:200px;}
+75%  {background:green; left:0px; top:200px;}
+100% {background:red; left:0px; top:0px;}
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+0%   {background:red; left:0px; top:0px;}
+25%  {background:yellow; left:200px; top:0px;}
+50%  {background:blue; left:200px; top:200px;}
+75%  {background:green; left:0px; top:200px;}
+100% {background:red; left:0px; top:0px;}
+}
+
+@-o-keyframes myfirst /* Opera */
+{
+0%   {background:red; left:0px; top:0px;}
+25%  {background:yellow; left:200px; top:0px;}
+50%  {background:blue; left:200px; top:200px;}
+75%  {background:green; left:0px; top:200px;}
+100% {background:red; left:0px; top:0px;}
+}
+
+div.c1
+{
+width:10px;
+height:10px;
+top:350px;
+border-radius:50%;
+background:red;
+position:absolute;
+animation-name:myfirst;
+animation-duration:1s;
+animation-timing-function:linear;
+animation-delay:0s;
+animation-iteration-count:infinite;
+animation-direction:normal;/*alternate normal*/
+animation-play-state:running;
+}
+div.c2
+{
+width:10px;
+height:10px;
+top:350px;
+border-radius:50%;
+background:red;
+position:absolute;
+animation-name:myfirst;
+animation-duration:2s;
+animation-timing-function:linear;
+animation-delay:1s;
+animation-iteration-count:infinite;
+animation-direction:normal;/*alternate normal*/
+animation-play-state:running;
+}
+div.c3
+{
+width:10px;
+height:10px;
+top:350px;
+border-radius:50%;
+background:red;
+position:absolute;
+animation-name:myfirst;
+animation-duration:3s;
+animation-timing-function:linear;
+animation-delay:2s;
+animation-iteration-count:infinite;
+animation-direction:normal;/*alternate normal*/
+animation-play-state:running;
+}
+div.c4
+{
+width:10px;
+height:10px;
+top:350px;
+border-radius:50%;
+background:red;
+position:absolute;
+animation-name:myfirst;
+animation-duration:4s;
+animation-timing-function:linear;
+animation-delay:3s;
+animation-iteration-count:infinite;
+animation-direction:normal;/*alternate normal*/
+animation-play-state:running;
+}
+</style>
+</head>
+<body>
+
+<div class="c1"></div>
+<div class="c2"></div>
+<div class="c3"></div>
+<div class="c4"></div>
+
+</body>
+</html>

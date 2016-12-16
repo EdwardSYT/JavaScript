@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+    <head lang="zh-CN">
+        <meta charset="UTF-8">
+        <title>爱德华_Edward_wayBase方法库</title>
+        <!--[if IE]><![endif]-->
+        <script src="../../../jquery-1.11.2.min.js"></script>
+        <style>
+            canvas {
+                border: 1px solid #aaa;
+                display: block;
+                margin: 50px auto; 
+            }
+        </style>
+    </head>
+    <body>
+
+    <canvas id="canvas">当前浏览器不支持Canvas，请更换浏览器后再试</canvas>
+
+    </body>
+    <script>
+    $(function() {
+
+        $(function() {
+
+            var canvas = document.getElementById("canvas");
+
+            canvas.width = 1200;
+            canvas.height = 800;
+
+            var context = canvas.getContext("2d");
+
+/** 绘制正方形 注意rect与fillRect、strokeRect的使用区别 **/
+            // drawRect(context,100,100,400,400,10,"#058","red");
+            // drawRect2(context,300,300,400,400,10,"#058","rgba(0,256,0,0.5)");
+
+/** 线条开始与结束头lineCap 默认butt 园round 方块square **/
+            // context.beginPath();
+            // context.moveTo(10,200);
+            // context.lineTo(700,200);
+            // context.lineCap = "round";// butt round square
+            // context.stroke();
+            
+/** 画一个五角星 线条相接处显示形式 **/
+            // context.lineWidth = 10;
+            // context.lineJoin = "miter";//尖角miter 衔接bevel 圆角round 注意miterLimit与miter共用的使用方式
+            // context.miterLimit = 2;
+            // drawStart(context,15,30,400,400,30);
+
+/** 画一片星空 **/
+            // context.fillStyle = "black";
+            // context.fillRect(0,0,canvas.width,canvas.height);
+            // for (var i = 0; i < 200; i++) {
+            //     var r = Math.random()*10+10;
+            //     var x = Math.random()*canvas.width;
+            //     var y = Math.random()*canvas.height;
+            //     var a = Math.random()*360;
+            //     drawStartSky(context,r,r/2,x,y,a);
+            // };
+
+/** 图形变换（位移translate(x,y) 旋转rotate(deg) 缩放scale(sx,yx)）
+            context.save();// 保存
+            context.fillStyle = "red";
+            context.translate(100,100);
+            // context.rotate(20);
+            // context.scale(2,2);
+            context.fillRect(0,0,400,400);
+            context.translate(-100,-100);// 需要把位置给重写回去（注意） 下面的代码可替换此还原方式restore save与restore成对出现
+            context.restore();// 恢复
+
+            context.fillStyle = "green";
+            context.translate(300,300);
+            // context.rotate(20);
+            // context.scale(10,10);
+            context.fillRect(0,0,400,400);
+            context.translate(-100,-100);// 需要把位置给重写回去（注意） **/
+
+/** 重新画一片星空 **/
+            // var skyStyle = context.createLinearGradient(0,0,0,canvas.height);
+            // skyStyle.addColorStop(0.0,"black");
+            // skyStyle.addColorStop(1.0,"#035");
+            // context.fillStyle = skyStyle;
+            // context.fillRect(0,0,canvas.width,canvas.height);
+            // for (var i = 0; i < 200; i++) {
+            //     var r = Math.random()*5+5;
+            //     var x = Math.random()*canvas.width;
+            //     var y = Math.random()*canvas.height*0.65;
+            //     var a = Math.random()*360;
+            //     drawStartSky2(context,r,x,y,a);
+            // };
+            // fillMoon(context,2,900,200,100,30);
+            // drawLand(context);
+
+/** 变换矩阵transform **/
+            // context.fillStyle = "red";
+            // context.strokeStyle = "#058";
+            // context.lineWidth = 5;
+            ///////////////////////////
+            /// a c e
+            /// b d f
+            /// 0 0 1
+            /// a1 b0 c0 d1 e0 f0
+            ///  //////////////////////
+            /// a b 水平 垂直缩放
+            /// c d 水平 垂直倾斜
+            /// e f 水平 垂直位移
+            ///////////////////////////
+            // context.save();
+            // context.transform(2,0,0,1,0,0);
+            // context.transform(0,2,2,0,0,0);// transform是累加的
+            // context.setTransform(1,3,0,1,0,0);// 重新设置
+            // context.fillRect(50,50,100,100);
+            // context.strokeRect(50,50,100,100);
+            // context.restore();
+
+/** createLinearGradient 线性渐变 **/
+            // var linearGrad = context.createLinearGradient(0,0,0,800);//(-200,-200,1000,1000)
+            // linearGrad.addColorStop(0.0,"white");
+            // linearGrad.addColorStop(0.25,"yellow");
+            // linearGrad.addColorStop(0.5,"green");
+            // linearGrad.addColorStop(0.75,"blue");
+            // linearGrad.addColorStop(1.0,"pink");
+            // context.fillStyle = linearGrad;
+            // context.fillRect(0,0,800,800);
+
+/** createRadialGradient 放射渐变 **/
+            // var linearGrad = context.createRadialGradient(400,400,100, 400,400,500);// x0,y0,r0, x1,y1,r1
+            // linearGrad.addColorStop(0.0,"white");
+            // linearGrad.addColorStop(0.25,"yellow");
+            // linearGrad.addColorStop(0.5,"green");
+            // linearGrad.addColorStop(0.75,"blue");
+            // linearGrad.addColorStop(1.0,"black");
+            // context.fillStyle = linearGrad;
+            // context.fillRect(0,0,800,800);
+
+/** createPattern 图片的使用 createPattern也可传入canvas、video **/
+            // var backgroundImage = new Image();
+            // backgroundImage.src = "../../../images/1.png";
+            // backgroundImage.onload = function() {
+            //     var pattern = context.createPattern(backgroundImage,"repeat");// no-repeat repeat-x repeat-y repeat
+            //     context.fillStyle = pattern;
+            //     context.fillRect(0,0,800,800);
+            // }
+
+/** 第一种曲线绘制 线、面 **/
+            // fillRoundRect(context,100,100,500,500,200,"yellow");
+            // strokeRoundRect(context,100,100,500,500,200,10,"blue");
+            /** 2048格子 **/
+            // fillRoundRect(context,150,150,500,500,10,"#bbada0");
+            // for (var i = 0; i < 4; i++) {
+            //     for (var j = 0; j < 4; j++) {
+            //         fillRoundRect(context,170+i*120,170+j*120,100,100,6,"#ccc0b3");
+            //     };
+            // };
+
+/** 第二种曲线绘制 arcTo 线 **/
+            // context.beginPath();
+            // context.moveTo(250,150);
+            // context.arcTo(650,150,650,650,300);
+            // context.lineWidth = 6;
+            // context.strokeStyle="red";
+            // context.stroke();
+            // arcToTest(context,150,100,650,200,550,600,400);// R半径
+            // fillMoon(context,2,900,200,100,30);// 画一个月亮
+
+/** 贝塞尔曲线 Bezier 二次曲线  三次曲线绿地 **/
+            // context.moveTo(100,100);
+            // context.quadraticCurveTo(200,200,300,100);
+            // context.stroke();
+            // drawLand(context);
+
+/** 文字渲染基础 渐变与图片背景也可一起使用 **/
+            // context.fillStyle="#058";
+            // context.strokeStyle="red";
+            // context.lineWidth=1;
+
+            // context.font="normal bold 40px Arial";
+            // context.textAlign = "left";// 左右对齐
+            // context.textBaseline = "top";// 上下对齐
+            // context.fillText("canvas文字渲染",100,100);
+
+            // context.font="italic bold 40px Arial";
+            // context.textAlign = "canter";
+            // context.textBaseline = "middle";
+            // context.strokeText("canvas文字渲染",100,150);
+
+            // context.font="small-caps oblique bold 40px Arial";
+            // context.textAlign = "right";
+            // context.textBaseline = "bottom";
+            // context.fillText("Canvas文字渲染",100,200,1000);// 第四个参数 可渲染像素宽度
+
+            // context.font="bold 40px Arial";
+            // context.fillText("Canvas文字渲染",100,250);
+
+            // context.font="normal 40px Arial";
+            // context.fillText("Canvas文字渲染",500,250);
+
+            // console.log(context.measureText("获取文本的宽度，前提需注意与字体样式font相关联").width);
+
+/** 阴影 **/
+            // context.shadowColor="gray";
+            // context.shadowOffsetX = -20;
+            // context.shadowOffsetY = 20;
+            // context.shadowBlur = 20;// 模糊虚化
+
+            // context.fillStyle="#058";
+            // context.fillRect(200,200,400,400);
+
+/** 透明度 重叠处**/
+            // // context.globalAlpha = 0.7;// 透明度 0.0至1.0
+            // context.globalCompositeOperation = "lighter";// 重叠处 种参数 详见ppt
+
+            // for (var i = 0; i < 100; i++) {
+
+            //     var R = Math.ceil(Math.random()*255);
+            //     var G = Math.floor(Math.random()*255);
+            //     var B = Math.round(Math.random()*255);
+
+            //     context.fillStyle="rgb("+R+","+G+","+B+")";
+
+            //     context.beginPath();
+            //     context.arc(Math.random()*canvas.width,Math.random()*canvas.height,Math.random()*100,0,Math.PI*2);
+            //     context.fill();
+            // };
+
+/** 剪辑区域 **/
+            // context.beginPath();
+
+            // context.fillStyle = "black";
+            // context.fillRect(0,0,canvas.width,canvas.height);
+
+            // context.fillStyle = "white";
+            // context.arc(400,400,150,0,Math.PI*2);
+            // context.fill();
+            // context.clip();// 剪辑
+
+            // context.fillStyle = "red";
+            // context.font="normal 40px Arial";
+            // context.fillText("Canvas文字渲染",300,400);
+
+/** 非零环绕原则 剪纸阴影效果 **/
+            // context.beginPath();
+            // context.arc(400,400,300,0,Math.PI*2,false);
+            // context.arc(400,400,150,0,Math.PI*2,true);
+            // context.closePath();
+
+            // context.fillStyle = "#058";
+            // context.shadowColor = "gray";
+            // context.shadowOffsetX = 10;
+            // context.shadowOffsetY = 10;
+            // contextshadowBlur = 10;
+            // context.fill();
+
+/** 清空操作 **/
+            // cxt.clearRect(0,0,canvas.width, canvas.height);
+
+/** 鼠标事件 isPointInPath检测函数 **/
+            // context.arc(400,400,100,0,Math.PI*2,false);
+            // context.fillStyle = "#058";
+            // context.fill();
+
+            // canvas.addEventListener("mousemove",function(){
+            //     detect(event,canvas,context);
+            // });
+
+/** canvas自定义扩展函数 **/
+            // CanvasRenderingContext2D.prototype.drawRect = function(x,y,width,height,boderWidth,borderColor,fillColor) {
+            //     this.beginPath();
+            //     this.rect(x,y,width,height);
+            //     this.closePath();
+
+            //     this.lineWidth = boderWidth;
+            //     this.fillStyle = fillColor;
+            //     this.strokeStyle = borderColor;
+
+            //     this.fill();
+            //     this.stroke();
+            // }
+            // context.drawRect(100,100,400,400,10,"#058","red");
+            // context.drawRect(200,200,200,200,20,"yellow","pink");
+
+/** canvas兼容IE6、7、8老式浏览器 https://github.com/arv/explorercanvas 随着ie9等对canvas兼容的越来越好，explorercanvas将退出历史舞台 **/
+            
+
+        })
+
+        function drawRect(cxt,x,y,width,height,boderWidth,borderColor,fillColor) {
+            cxt.beginPath();
+            cxt.rect(x,y,width,height);
+            cxt.closePath();
+
+            cxt.lineWidth = boderWidth;
+            cxt.fillStyle = fillColor;
+            cxt.strokeStyle = borderColor;
+
+            cxt.fill();
+            cxt.stroke();
+        }
+
+        function drawRect2(cxt,x,y,width,height,boderWidth,borderColor,fillColor) {
+
+            cxt.lineWidth = boderWidth;
+            cxt.fillStyle = fillColor;
+            cxt.strokeStyle = borderColor;
+
+            cxt.fillRect(x,y,width,height);
+            cxt.strokeRect(x,y,width,height);
+        }
+
+        function drawStart(cxt,r,R,x,y,rot) {// rot 角度
+            cxt.beginPath();
+            for (var i = 0; i < 5; i++) {
+                cxt.lineTo(Math.cos((18+i*72-rot)/180*Math.PI)*R+x,
+                              -Math.sin((18+i*72-rot)/180*Math.PI)*R+y);
+                cxt.lineTo(Math.cos((54+i*72-rot)/180*Math.PI)*r+x,
+                              -Math.sin((54+i*72-rot)/180*Math.PI)*r+y);
+            };
+            cxt.closePath();
+            cxt.stroke();
+        }
+
+        function drawStartSky(cxt,r,R,x,y,rot) {// rot 角度
+            cxt.beginPath();
+            for (var i = 0; i < 5; i++) {
+                cxt.lineTo(Math.cos((18+i*72-rot)/180*Math.PI)*R+x,
+                              -Math.sin((18+i*72-rot)/180*Math.PI)*R+y);
+                cxt.lineTo(Math.cos((54+i*72-rot)/180*Math.PI)*r+x,
+                              -Math.sin((54+i*72-rot)/180*Math.PI)*r+y);
+            };
+            cxt.closePath();
+            cxt.fillStyle = "#fb3";
+            cxt.strokeStyle = "#fb5";
+            cxt.lineWidth = 3;
+            cxt.lineJoin = "round";
+
+            cxt.fill();
+            cxt.stroke();
+        }
+
+        function drawStartSky2(cxt,R,x,y,rot) {
+
+            cxt.save();
+
+            cxt.translate(x,y);
+            cxt.rotate(rot/180*Math.PI);
+            cxt.scale(R,R);// 运用缩放的时候storke会有副作用，不得不舍弃
+
+            startPath(cxt);
+
+            cxt.fillStyle = "#fb3";
+            // cxt.strokeStyle = "#fb5";
+            // cxt.lineWidth = 3;
+            // cxt.lineJoin = "round";
+
+            cxt.fill();
+            // cxt.stroke();
+
+            cxt.restore();
+        }
+
+        function startPath(cxt) {
+            cxt.beginPath();
+            for (var i = 0; i < 5; i++) {
+                cxt.lineTo(Math.cos((18+i*72)/180*Math.PI),
+                              -Math.sin((18+i*72)/180*Math.PI));
+                cxt.lineTo(Math.cos((54+i*72)/180*Math.PI)*0.5,
+                              -Math.sin((54+i*72)/180*Math.PI)*0.5);
+            };
+            cxt.closePath();
+        }
+
+        function fillRoundRect(cxt,x,y,width,height,radius,fillColor) {
+
+            if(2*radius>width || 2*radius>height) return;
+
+            cxt.save();
+            cxt.translate(x,y);
+            pathRoundRect(cxt,width,height,radius);
+            cxt.fillStyle = fillColor||"black";
+            cxt.fill();
+            cxt.restore();
+        }
+
+        function strokeRoundRect(cxt,x,y,width,height,radius,lineWidth,strokeColor) {
+
+            if(2*radius>width || 2*radius>height) return;
+
+            cxt.save();
+            cxt.translate(x,y);
+            pathRoundRect(cxt,width,height,radius);
+            cxt.strokeStyle = strokeColor||"black";
+            cxt.lineWidth = lineWidth||3;
+            cxt.stroke();
+            cxt.restore();
+        }
+
+        function pathRoundRect(cxt,width,height,radius) {
+            cxt.beginPath();
+            cxt.arc(width-radius,height-radius,radius,0,Math.PI/2);
+            cxt.lineTo(radius,height);
+            cxt.arc(radius,height-radius,radius,Math.PI/2,Math.PI);
+            cxt.lineTo(0,radius);
+            cxt.arc(radius,radius,radius,Math.PI,Math.PI*3/2);
+            cxt.lineTo(width-radius,0);
+            cxt.arc(width-radius,radius,radius,Math.PI*3/2,Math.PI*2);
+            cxt.closePath();
+        }
+
+        function arcToTest(cxt,x0,y0,x1,y1,x2,y2,R) {
+            cxt.beginPath();
+            cxt.moveTo(x0,y0);
+            cxt.arcTo(x1,y1,x2,y2,R);
+
+            cxt.lineWidth = 6;
+            cxt.strokeStyle="red";
+            cxt.stroke();
+
+            cxt.beginPath();
+            cxt.moveTo(x0,y0);
+            cxt.lineTo(x1,y1);
+            cxt.lineTo(x2,y2);
+
+            cxt.lineWidth = 2;
+            cxt.strokeStyle="gray";
+            cxt.stroke();
+
+        }
+
+        function fillMoon(cxt,d,x,y,R,rot,fillColor) {
+            cxt.save();
+            cxt.translate(x,y);
+            cxt.rotate(rot*Math.PI/180);
+            cxt.scale(R,R);
+            pathMoon(cxt,d);
+            cxt.fillStyle = fillColor||"#fb5";
+            cxt.fill();
+            cxt.restore();
+        }
+
+        function pathMoon(cxt,d) {
+            cxt.beginPath();
+            cxt.arc(0,0,1,0.5*Math.PI,1.5*Math.PI,true);
+            cxt.moveTo(0,-1);
+            // cxt.arcTo(d,0,0,1,dis(0,-1,d,0)/d);
+            cxt.quadraticCurveTo(1.2,0,0,1);
+            cxt.closePath();
+        }
+
+        function dis(x1,y1,x2,y2) {
+            return Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
+        }
+
+        function drawLand(cxt) {
+
+            cxt.save();
+            cxt.beginPath();
+
+            cxt.moveTo(0,600);
+            cxt.bezierCurveTo(540,400,660,800,1200,600);
+            cxt.lineTo(1200,800);
+            cxt.lineTo(0,800);
+            cxt.closePath();
+
+            var landStyle = cxt.createLinearGradient(0,800,0,0);//(-200,-200,1000,1000)
+            landStyle.addColorStop(0.0,"#030");
+            landStyle.addColorStop(1.0,"#580");
+            cxt.fillStyle = landStyle;
+
+            cxt.fill();
+
+            cxt.restore();
+        }
+
+        // 可当作获取x、y的标准写法
+        function detect(event,canvas,context) {
+            var x = event.clientX-canvas.getBoundingClientRect().left;
+            var y = event.clientY-canvas.getBoundingClientRect().top;
+            draw(x,y,context);
+        }
+
+        function draw(x,y,context) {
+            context.clearRect(0,0,canvas.width, canvas.height);
+            context.beginPath();
+            context.arc(400,400,100,0,Math.PI*2,false);
+            if(context.isPointInPath(x,y)) {
+                context.fillStyle="red";
+            }else {
+                context.fillStyle="#058";
+            }
+            context.fill();
+        }
+        
+    })
+    </script>
+</html>

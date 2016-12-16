@@ -1,0 +1,68 @@
+<script>
+var __=console.log;
+    var pattern = /s$/;
+    var pattern = new RegExp("s$","igm");
+    __(pattern);
+    // 直接量字符 page255
+    // 字符类 
+    // /[abc]/
+    // /[^abc]/
+    // /[a-z]/
+    // /[a-zA-Z0-9]/
+
+    var vals = "1333JavaScriptScript2JavaScriptScript3JavaScriptScript ,  66  ,67  ,gg  , 00";
+    __(vals.search(/script/i));
+    __(vals.search(/^[Ss]cript/));
+    __(vals.search(/[Ss]cript$/));
+
+    __(vals.match(/s/ig));
+    __(vals.match(/\d+/g));
+
+    __(vals.replace(/script/ig,"222"),vals);
+
+    __(vals.split(/\s*,\s*/),vals);
+
+    var pattern = /Java/g;
+    var pattern1 = /Java/g;
+    var text = "JavaScript is more fun than Java!";
+    var result;
+    while((result = pattern.exec(text)) != null) {
+        __(result[0],result.index,pattern.lastIndex);
+    }
+    __(pattern1.exec(text),pattern1.lastIndex);
+    __(pattern1.exec(text),pattern1.lastIndex);
+
+    /**高亮**/
+    function searchHighlight(temp,keyword) { 
+
+        if("" == keyword) return;
+        var arrA = new Array(); 
+        words = unescape(keyword.replace(/\+/g,' ')).split(/\s+/); // unescape 
+        //替换关键字 
+        for (w=0;w<words.length;w++) 
+        { 
+            var r = new RegExp("("+words[w].replace(/[(){}.+*?^$|\\\[\]]/g, "\\$&")+")","ig"); 
+            temp = temp.replace(r,"<em style=' background:#fe0200;color:#fff;'>$1</em>"); 
+        } 
+        //恢复HTML标签 
+        for(var i=0;i<arrA.length;i++) 
+        { 
+            temp=temp.replace("{[("+i+")]}",arrA[i]); 
+        } 
+        return temp; 
+    } 
+    var temp = "执行一次全局替换，每当 'Microsoft' 被找到，它就被替换为 age_events.js prints out page events firing: useful to better grasp page.on* callback",
+        pattern = /(每)/ig;
+    __(searchHighlight(temp,"大"));
+
+    __(temp.replace(pattern,"<em style=' background:#fe0200;color:#fff;'>$1</em>"));
+
+    var name = '"a", "b"';
+    __(name.replace(/"([^"]*)"/g, "*$1*"));
+
+    function test(v, key) {
+        return v.replace(new RegExp("("+key+")","ig"),"<em style=' background:#fe0200;color:#fff;'>$1</em>");
+    }
+    document.write(test("执行每一次全局替换，每当 'Microsoft' 被找到，它就被替换为 age_events.js prints out page events firing: useful to better grasp page.on* callback","o"));
+
+</script>

@@ -1,0 +1,86 @@
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style></style>
+
+<script src="jquery-1.11.2.min.js"></script>
+
+    <script>
+    jQuery.verifyTest = function() {
+
+        $("input[test]").on("blur", function() {
+
+            if($(this).next("i").prop("tagName") == "I") {
+                $(this).next("i").remove();
+            }
+            if($(this).val() == "") {
+
+                $(this).after("<i style='color:#C00000' test class='verify'>"+$(this).attr("test")+" 不可为空</i>");
+                $(this).css("border","2px solid #C00000").focus();
+            }else {
+                $(this).next("i").remove();
+                $(this).css("border","1px solid #CCC");
+            }
+        })
+    }
+    jQuery.verifyTestSaveButAfter = function() {
+        var testArray = [];
+        $("input[test]").each(function(index, el) {
+            if($(this).next("i").prop("tagName") == "I") {
+                $(this).next("i").remove();
+            }
+            if($(this).val() == "") {
+
+                $(this).after("<i style='color:#C00000' test class='verify'>"+$(this).attr("test")+" 不可为空</i>");
+                $(this).css("border","2px solid #C00000").focus();
+                testArray.push(0)
+            }else {
+                $(this).next("i").remove();
+                $(this).css("border","1px solid #CCC");
+                testArray.push(1)
+            }
+        });
+        if($.inArray(0,testArray) == -1) {
+            return false;
+        }else {
+            return true;
+        }
+    }
+    </script>
+
+
+    <script>
+        $.verifyTest();
+        $("#save").on("click", function() {
+            if($.verifyTestSaveButAfter())return;
+
+            // 保存代码
+            alert("保存");
+        })
+
+
+showConfirm({"code":"确定要 删除 吗？","message":""}, function(use) {
+    console.log(use.attr("data-id"));
+},$(this));
+var ttt = 0;
+showAlert({"code":"确定要 删除 吗？","message":""}, function(use) {
+    console.log(use);
+},ttt);
+
+
+
+    </script>
+</head>
+<body>
+    姓名:<input class="" id="stationName1" test="姓名" value="" type="text"/>
+    年龄:<input class="" id="stationName2" test="年龄" value="" type="text"/>
+    说明:<input class="" id="stationName3" test="说明"  value="" type="text"/>
+    说明:<input class="" id="stationName3"   value="" type="text"/>
+    说明:<input class="" id="stationName3"   value="" type="text"/>
+    说明:<input class="" id="stationName3"   value="" type="text"/>
+    说明:<input class="" id="stationName3"   value="" type="text"/>
+    说明:<input class="" id="stationName3"   value="" type="text"/>
+    说明:<input class="" id="stationName3"  test="说明" value="" type="text"/>
+    <input class="" id="save" value="提交" type="button"/>
+</body>
+</html>

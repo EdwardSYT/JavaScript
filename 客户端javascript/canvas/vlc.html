@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+    <head lang="zh-CN">
+        <meta charset="UTF-8">
+        <title>爱德华_Edward_vlc</title>
+        <script src="../../jquery-1.11.2.min.js"></script>
+        <style>
+            div {
+                position:relative;
+                /*top:100px;*/
+                float: right;
+                right:500px;
+            }
+            img {
+                position:absolute;
+                width:500px;
+                height:410px;
+                display:none;
+            }
+            canvas {
+                position:absolute;
+                top:0px;
+                cursor:crosshair;
+            }
+        </style>
+    </head>
+    <body>
+    <!-- <iframe src="vlc2.html" width="400" height="400"></iframe> -->
+
+    <!-- <object class="obj" width="800" height="450"   codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=4,0,2,0"  classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000">
+      <param value="high" name="quality">
+      <param value="transparent" name="wmode">
+      <embed  width="800" height="450"  wmode="transparent" type="application/x-shockwave-flash"   pluginspage="http://www.macromedia.com/shockwave/download/index.gi?P1_Prod_Version=ShockwaveFlash"  quality="high" src="flash.swf">
+    </object> -->
+    <video src="video/plate003.mp4" controls="controls" width="500" height="410">
+您的浏览器不支持 video 标签。
+</video>
+    
+    <object type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" id="vlc" events="false" width="500" height="410">
+        <param name="mrl" value="rtsp://172.28.0.75:554/user=admin&password=&channel=1&stream=1.sdp" />
+        
+        <param name="volume" value="50" />
+        <param name="autoplay" value="true" />
+        <param name="loop" value="false" />
+        <param name="fullscreen" value="true" />
+        <param name="controls" value="true" />
+        <param name="wmode" value="transparent">
+
+
+    </object>
+
+    <div>
+        <img id="imgSrc" src="vlc.png" />
+        <canvas id="canvas">当前浏览器不支持Canvas，请更换浏览器后再试</canvas>
+    </div>
+
+    <!-- <object type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" id="vlc" events="false" width="500" height="410">
+        <param name="mrl" value="rtsp://172.32.1.150:554/user=admin&password=&channel=1&stream=1.sdp?real_stream" />
+        
+        <param name="volume" value="50" />
+        <param name="autoplay" value="true" />
+        <param name="loop" value="false" />
+        <param name="fullscreen" value="true" />
+        <param name="controls" value="true" />
+    </object> -->
+
+    </body>
+    <script>
+    $(function() {
+
+        var canvas = document.getElementById("canvas"),
+            context = canvas.getContext("2d"),
+            isMouseDown=false,
+            clickLoc = {x:0,y:0},
+            curLoc = {x:0,y:0};
+
+            canvas.width = 500;
+            canvas.height = 410;
+
+        canvas.onmousedown = function(e) {
+            e.preventDefault();
+            beginStroke( {x: e.clientX , y: e.clientY} );
+            console.log({topLeftX:clickLoc.x,topLeftY:clickLoc.y,topLeftScaleXY:(clickLoc.x/canvas.width)+","+(clickLoc.y/canvas.height)});
+        };
+        canvas.onmouseup = function(e) {
+            e.preventDefault();
+            isMouseDown = false;
+            console.log({lowerRightX:curLoc.x,lowerRightY:curLoc.y,lowerRightScaleXY:(curLoc.x/canvas.width)+","+(curLoc.y/canvas.height)});
+        };
+        canvas.onmouseout = function(e) {
+        };
+        canvas.onmousemove = function(e) {
+            e.preventDefault()
+            if( isMouseDown ) {
+                moveStroke({x: e.clientX , y: e.clientY})
+            }
+        };
+        function beginStroke(point) {
+
+            isMouseDown = true
+            clickLoc = windowToCanvas(point.x, point.y)
+        }
+        function windowToCanvas( x , y ) {
+            var bbox = canvas.getBoundingClientRect()
+            return {x:Math.round(x-bbox.left) , y:Math.round(y-bbox.top)}
+        }
+        function moveStroke(point,canvasPoint) {
+
+            context.clearRect(0,0,canvas.width, canvas.height);
+
+            curLoc = canvasPoint?canvasPoint:windowToCanvas( point.x , point.y );
+            
+            context.globalAlpha = 0.4;
+            context.fillStyle = "#f5acac";
+
+            context.fillRect(clickLoc.x , clickLoc.y, curLoc.x-clickLoc.x , curLoc.y-clickLoc.y);
+
+            context.globalAlpha = 1;
+            context.strokeStyle = "#c50e0e";
+            context.strokeRect(clickLoc.x , clickLoc.y, curLoc.x-clickLoc.x , curLoc.y-clickLoc.y);
+        }
+        
+        clickLoc = {x: 100, y: 100};
+        moveStroke({},{x:200,y:200});
+        
+
+    })
+    </script>
+</html>

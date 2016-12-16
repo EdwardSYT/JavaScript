@@ -1,0 +1,285 @@
+<html>
+    <head>
+        <title>爱德华_Edward</title>
+        <script src="../../jquery-1.11.2.min.js"></script>
+        <script src="../../jquery.easing.1.3.js"></script>
+        <style>
+            .d0 {
+                position:absolute;
+                top: 0px;
+                left: 10px;
+                opacity:0;
+            }
+            .d1 {
+                position:absolute;
+                top: 20px;
+                left: 20px;
+            }
+            .d2 {
+                position:absolute;
+                top: 40px;
+                left: 30px;
+            }
+            .d3 {
+                position:absolute;
+                top: 60px;
+                left: 40px;
+            }
+            .din {
+                position:absolute;
+                top: 80px;
+                left: 50px;
+            }
+            .d4 {
+                position:absolute;
+                top: 100px;
+                left: 40px;
+            }
+            .d5 {
+                position:absolute;
+                top: 120px;
+                left: 30px;
+            }
+            .d6 {
+                position:absolute;
+                top: 140px;
+                left: 20px;
+            }
+            .d7 {
+                position:absolute;
+                top: 160px;
+                left: 10px;
+                opacity:0;
+            }
+            #r {
+                position:relative;
+            }
+            #r div.sel{
+                cursor:pointer;
+            }
+            #top {
+                position:absolute;
+                top: 0px;
+                left: 10px;
+            }
+            #down {
+                position:absolute;
+                top: 180px;
+                left: 10px;
+            }
+            .selected {
+                background-color: red;
+                color: #ffffff;
+                border-radius: 30%;
+            }
+
+            .test {
+                position:absolute;
+                top: 200px;
+                left: 400px;
+            }
+        </style>
+    </head>
+    <body>
+
+    <a href="javascript:void(0);" id="top">上上上上上上上上上上上</a>
+
+    <div id="r">
+        <!-- <div class="d0">0市</div>
+
+        <div class="d1">1市</div>
+        <div class="d2">2市</div>
+        <div class="d3">3市</div>
+
+        <div class="din">市级</div>
+
+        <div class="d4">4市</div>
+        <div class="d5">5市</div>
+        <div class="d6">6市</div>
+
+        <div class="d7">7市</div> -->
+    </div>
+
+    <a href="javascript:void(0);" id="down">下下下下下下下下下下下</a>
+
+    <!-- <div class="test">*</div> -->
+
+    </body>
+    <script>
+    $(function() {
+
+        function ttt() {
+            var angle = 0;//已知角度 
+            var rHis = 60;//已知半径
+            var test = setInterval(function() {
+                var xHis = 0;//已知X轴坐标
+                var YHis = 0;//已知Y轴坐标
+                // var rHis = 100;//已知半径
+                // var angle = 10;//已知角度
+                var useX = xHis+rHis*Math.cos(angle*Math.PI/-180);//根据角度求任一点X轴坐标
+                var useY = YHis+rHis*Math.sin(angle*Math.PI/-180);//根据角度求任一点Y轴坐标
+                console.log(useX,useY);
+
+                var O = document.createElement('span');
+                O.appendChild(document.createTextNode('.'));
+                document.body.appendChild(O);
+                O.style.position = 'absolute';
+                O.style.left = (0+useX)+'px';
+                O.style.top = (80+useY)+'px';
+                O.style.color = 'red';
+                angle+=1;
+                // rHis-=0.1;
+                if(angle==360) clearInterval(test);
+            },5);
+        }
+        // ttt();
+
+
+        $("#r").on("click", "div.sel", function() {
+            $("#r").find("div.sel").removeClass('selected');
+            $(this).addClass('selected');
+        })
+        var speed = 200;
+        var l = ["1市","2市","3市","4市","5市","6市","7市","8市","9市","10市","11市","12市","13市","14市","15市","16市"];
+        // var l = ["1市","2市","3市","4市","5市","6市","7市","8市","9市","10市"];
+        for (var k in l) {
+            if(k==8) break;
+            $("#r").append("<div class='sel d"+k+"' data-num='"+k+"'>"+l[k]+"</div>");
+            if(k==3) $("#r").append("<div class='din'>市级</div>");
+        }
+
+        $("#r").find("div.d1").css({
+            left: (0+0+60*Math.cos(20*Math.PI/-180))+'px',
+            top: (80+0+60*Math.sin(20*Math.PI/-180))+'px'
+        });
+        
+        var topI=null;
+        $("#top").on("mousedown", function() {
+            topI = setInterval(topClick,speed+50);
+        })
+        $("#top").on("mouseup mouseout", function() {
+            clearInterval(topI);
+        })
+        // $("#top").on("mouseout", function() {
+        //     clearInterval(topI);
+        // })
+
+        var downI=null;
+        $("#down").on("mousedown", function() {
+            downI = setInterval(downClick,speed+50);
+        })
+        $("#down").on("mouseup mouseout", function() {
+            clearInterval(downI);
+        })
+        // $("#down").on("mouseout", function() {
+        //     clearInterval(downI);
+        // })
+
+        function topClick() {
+                $(".d1").animate({ 
+                            top: [0, 'linear'], 
+                            left: [10, 'swing'],
+                            opacity:"0"
+                        },speed,function() {
+                            $(".d0").remove();
+                            $(this).removeClass('d1').addClass('d0');
+                        });
+                $(".d2").animate({ 
+                            top: [20, 'linear'], 
+                            left: [20, 'swing']
+                        },speed,function() {
+                            $(this).removeClass('d2').addClass('d1');
+                        });
+                $(".d3").animate({ 
+                            top: [40, 'linear'], 
+                            left: [30, 'swing']
+                        },speed,function() {
+                            $(this).removeClass('d3').addClass('d2');
+                        });
+                $(".d4").animate({ 
+                            top: [60, 'linear'], 
+                            left: [40, 'swing']
+                        },speed,function() {
+                            $(this).removeClass('d4').addClass('d3');
+                        });
+                $(".d5").animate({ 
+                            top: [100, 'linear'], 
+                            left: [40, 'swing']
+                        },speed,function() {
+                            $(this).removeClass('d5').addClass('d4');
+                        });
+                $(".d6").animate({ 
+                            top: [120, 'linear'], 
+                            left: [30, 'swing']
+                        },speed,function() {
+                            $(this).removeClass('d6').addClass('d5');
+                        });
+                $(".d7").animate({ 
+                            top: [140, 'linear'], 
+                            left: [20, 'swing'],
+                            opacity:"1"
+                        },speed,function() {
+                            $(this).removeClass('d7').addClass('d6');
+                            if((l.length-1)==parseInt($(this).attr("data-num"))) {
+                                $("#r").append("<div class='sel d7' data-num='0'>"+l[0]+"</div>");
+                            }else {
+                                $("#r").append("<div class='sel d7' data-num='"+(parseInt($(this).attr("data-num"))+1)+"'>"+l[(parseInt($(this).attr("data-num"))+1)]+"</div>");
+                            }
+                        });
+        }
+
+        function downClick() {
+                $(".d0").animate({ 
+                            top: [20, 'linear'], 
+                            left: [20, 'swing'],
+                            opacity:"1"
+                        },speed,function() {
+                            $(this).removeClass('d0').addClass('d1');
+                            if(0==parseInt($(this).attr("data-num"))) {
+                                $("#r").append("<div class='sel d0' data-num='"+(l.length-1)+"'>"+l[(l.length-1)]+"</div>");
+                            }else {
+                                $("#r").append("<div class='sel d0' data-num='"+(parseInt($(this).attr("data-num"))-1)+"'>"+l[(parseInt($(this).attr("data-num"))-1)]+"</div>");
+                            }
+                        });
+                $(".d1").animate({ 
+                            top: [40, 'linear'], 
+                            left: [30, 'swing']
+                        },speed,function() {
+                            $(this).removeClass('d1').addClass('d2');
+                        });
+                $(".d2").animate({ 
+                            top: [60, 'linear'], 
+                            left: [40, 'swing']
+                        },speed,function() {
+                            $(this).removeClass('d2').addClass('d3');
+                        });
+                $(".d3").animate({ 
+                            top: [100, 'linear'], 
+                            left: [40, 'swing']
+                        },speed,function() {
+                            $(this).removeClass('d3').addClass('d4');
+                        });
+                $(".d4").animate({ 
+                            top: [120, 'linear'], 
+                            left: [30, 'swing']
+                        },speed,function() {
+                            $(this).removeClass('d4').addClass('d5');
+                        });
+                $(".d5").animate({ 
+                            top: [140, 'linear'], 
+                            left: [20, 'swing']
+                        },speed,function() {
+                            $(this).removeClass('d5').addClass('d6');
+                        });
+                $(".d6").animate({ 
+                            top: [160, 'linear'], 
+                            left: [10, 'swing'],
+                            opacity:"0"
+                        },speed,function() {
+                            $(".d7").remove();
+                            $(this).removeClass('d6').addClass('d7');
+                        });
+        }
+    })
+    </script>
+</html>

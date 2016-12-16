@@ -1,0 +1,70 @@
+<span id="test">test</span>
+<a href="http://www.baidu.com" target="_blank">baidu _blank</a>
+<a href="http://www.baidu.com" target="_parent">baidu _parent</a>
+<a href="http://www.baidu.com" target="_top">baidu _top</a>
+<script>
+    var __=function(x){console.log(x);};
+    // __(window.location.search.substring(1)+"*");
+    // setTimeout(function(){
+    //     location.replace("http://www.baidu.com");
+    // },1000);
+    
+    // var i=0,interval;
+    // interval = setInterval(function(){
+    //     alert(i++);
+    //     if(i==20)clearInterval(interval);
+    // },0);
+    
+    // location = "#top";// 如果文档中没有元素的ID是“top”，它会让浏览器跳到文档开始处。
+
+    // location.search = "?page=111111111";//重新载入search
+    
+    /**浏览器和屏幕信息
+    __(navigator.appName);
+    __(navigator.appVersion);
+    __(navigator.userAgent);
+    __(navigator.platform);
+    __(navigator.onLine);//是否连网
+
+    __(screen.width);
+    __(screen.height);
+    __(screen.availWidth);
+    __(screen.availHeight);**/
+
+    /**对话框 参见page350**/
+    // window.showModalDialog("http://localhost/tm/app/views/index.html",{},"dialogWidth=200px;dialogHeight=100px");
+
+    /**错误处理 显式通知
+    window.onerror = function(msg, url, line) {
+        if(onerror.num++ < onerror.max) {
+            alert("ERROE:"+msg+"\n"+url+":"+line);
+            return true;
+        }
+    }
+    onerror.max=5;
+    onerror.num=0;
+
+    __(onerror("null","http://dfad.dfda.fd","123"));
+    onerror("null","http://dfad.dfda.fd","123");
+    onerror("null","http://dfad.dfda.fd","123");
+    onerror("null","http://dfad.dfda.fd","123");
+    onerror("null","http://dfad.dfda.fd","123");
+    onerror("null","http://dfad.dfda.fd","123");
+    onerror("null","http://dfad.dfda.fd","123");
+    onerror("null","http://dfad.dfda.fd","123");
+    onerror("null","http://dfad.dfda.fd","123"); **/
+
+    var ui=["a","b","c"];
+    ui.forEach(function(id) {
+        __(id);
+    });
+
+    var $ = function(id){return document.getElementById(id)};
+    __($("test"));
+
+    // var w = window.open();
+    // w.alert("About to visit http://www.baidu.com");
+    // w.location = "http://www.baidu.com";
+
+</script>
+

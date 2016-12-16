@@ -1,0 +1,93 @@
+<script>
+var __ = console.log;
+    /**常量和局部变量
+    const pi = 3.14;
+    // pi = 4; // 常量不可多次赋值
+    // const pi = 4; // 常量不可多次定义
+    // var pi = // 4;常量不可多次定义
+    
+    for(var i=0;i<2;i++) { // let and var is different.
+        __(i+"*");
+    }
+    __(i);
+
+    var o = {x:1,y:2};
+    for(let p in o)__(p);
+    for(let v in o)__(o[v]);**/
+
+    /**解构赋值
+    let [x,y]=[1,2];
+    [x,y]=[x+1,y+1];
+    [x,y]=[y,x];
+    __(x,y);
+
+    [x,y]=[1];
+    __(x,y);
+    [x,y]=[1,2,3];
+    __(x,y);
+    [,x,,y]=[1,2,3,4];
+    __(x,y);
+
+    // “链式”解构赋值
+    let a,b,c;
+    all = [a,b] = [1,2,3,4];
+    __(all,a,b,c);
+
+    let q = {a:11,b:22,c:33};
+    let {a:aa,b:bb,c:cc} = q;
+    __(aa,bb,cc,"***");**/
+
+    /**迭代**/
+    let o = {a:1,b:2,c:3};
+    for(let p in o) __(p);
+    
+    // 迭代器
+    function t(i) {
+        this.b;
+        return {
+            next:function(){return i>100?false:this.b = i++;},
+            back:function(){return i--;},
+            ii:this.b
+        }
+    }
+    let tv = t(90);
+    __(tv.next());
+    __(tv.next());
+    __(tv.next());
+    __(tv.back());
+    __(tv.back());
+    __(tv.back());
+    while(tv.next()){
+        __(tv.next()+"&");
+    }
+
+    // 生成器
+    // function range(min,max) {
+    //     for(let i = Math.ceil(min); i<=max; i++){yield i;}
+    // }
+
+    // for(let n in range(3,8)) {__(n);}
+
+    // 数组推导
+    // var data = [2,3,4,5];
+    // squares = [x*x for each (x in data)];
+
+    // 多catch从句
+    try {
+
+    } catch(e) {
+
+    } finally {
+
+    }
+
+    // var pt = <dd><aa><name>test</name></aa></dd>;
+    
+
+</script>
+
+<!--<script type="application/javascript; version=1.7">
+alert();
+    var test = {a:1,b:2,c:3};
+    for each (var qq in test) {__(qq);}
+</script>-->

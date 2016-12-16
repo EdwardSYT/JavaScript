@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <title>爱德华</title>
+    </head>
+    <body contenteditable><!-- contenteditable此属性设置文档可编辑 -->
+        <h1>oo</h1>
+        <p>This is a <i>simple</i> document</p>
+        <ul id="htmlul">
+            <li class="q1">11</li>
+            <li class="q2">22</li>
+            <li class="q3">33</li>
+            <li class="q4">44</li>
+        </ul>
+        <select multiple>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
+        <iframe id="editor" src="about:blank"></iframe>
+    </body>
+</html>
+<script>
+    var __=function(x) {console.log(x);};
+
+    // 此方法主要用于倒序排列一个节点的子节点
+    function reverse(n) {
+
+        var f = document.createDocumentFragment();
+        while(n.lastChild) {
+            f.appendChild(n.lastChild);
+        }
+        n.appendChild(f);
+    }
+
+    window.onload = function() {
+
+        __(document.getElementsByClassName("q1"));
+
+        // ByTagName获取的元素为本身的元素，可以不用remove再添加到后面，直接运用原本的元素即可
+        document.getElementById("htmlul").onclick = function() {
+
+            var li = document.getElementsByTagName("li")[0];
+            document.getElementsByTagName("ul")[0].appendChild(li);
+            
+            // reverse(document.getElementById("htmlul"));
+            
+            __(this.getBoundingClientRect());
+        }
+
+        // 设置元素由不可编辑状态变为可编辑状态，
+        // 很多富文档编辑器就是用这些类似的方法来构建的，
+        // 还需解决兼容的问题，
+        // 目前我们如果要使用编辑功能，可以在网上找一个兼容性高的插件即可。
+        var editor = document.getElementById("editor");
+        editor.contentDocument.designMode = "on";
+
+    }
+
+    document.write("<br>fdfdfdf");
+
+</script>

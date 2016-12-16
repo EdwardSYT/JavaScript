@@ -1,0 +1,12 @@
+
+1、纯前端开发工作经验至少2年；
+2、熟练使用javascript；
+3、对ECMAScript有一定的认知；
+4、熟练使用html5、css3优化前端dom；
+5、熟悉前后端分离开发模式，能合理的运用ajax来调用不同restful接口；
+6、熟悉闭包、回调函数、函数式编程、“链式”解构赋值以及插件封装等js底层基础技术；
+7、使用过原生svg、canvas解决过可视化需求；
+8、有一定的移动端开发经验；
+9、运用过以下css/js插件和可视化引擎：bootstrap、ztree、echarts、d3、templet、jquery等；
+10、有解决浏览器兼容问题的经验；
+11、有后端javaweb开发工作经验者最佳。

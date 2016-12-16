@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head lang="zh-CN">
+        <meta charset="UTF-8">
+        <title>爱德华_Edward_vlc</title>
+        <script src="../../jquery-1.11.2.min.js"></script>
+        <style>
+            div {
+                position:relative;
+            }
+            img {
+                position:absolute;
+                width:500px;
+                height:410px;
+            }
+            canvas {
+                position:absolute;
+                top:0px;
+                cursor:crosshair;
+            }
+            button {
+                position:absolute;
+                left:550px;
+            }
+        </style>
+    </head>
+    <body>
+
+    <div>
+        <img id="imgSrc" src="vlc.png" />
+        <canvas id="canvas">当前浏览器不支持Canvas，请更换浏览器后再试</canvas>
+    </div>
+    <button type="button">获取起止坐标!</button>
+
+    </body>
+    <script>
+    $(function() {
+
+      $.drawCanvas = function(id,width,height,topLeft,lowerRight) {
+
+        this.topLeft = topLeft;
+        this.lowerRight = lowerRight;
+
+        var thisF = this,
+            canvas = document.getElementById(id),
+            context = canvas.getContext("2d"),
+            isMouseDown=false,
+            clickLoc = {x:thisF.topLeft.topLeftX,y:thisF.topLeft.topLeftY},
+            lr = {x:thisF.lowerRight.lowerRightX,y:thisF.lowerRight.lowerRightY},
+            curLoc = {x:0,y:0};
+            canvas.width = width;
+            canvas.height = height;
+
+        canvas.onmousedown = function(e) {
+            e.preventDefault();
+            beginStroke( {x: e.clientX , y: e.clientY} );
+            thisF.topLeft = {topLeftX:clickLoc.x,topLeftY:clickLoc.y,topLeftScaleXY:(clickLoc.x/canvas.width)+","+(clickLoc.y/canvas.height)};
+        };
+        canvas.onmouseup = function(e) {
+            e.preventDefault();
+            isMouseDown = false;
+            thisF.lowerRight = {lowerRightX:curLoc.x,lowerRightY:curLoc.y,lowerRightScaleXY:(curLoc.x/canvas.width)+","+(curLoc.y/canvas.height)};
+        };
+        canvas.onmouseout = function(e) {
+        };
+        canvas.onmousemove = function(e) {
+            e.preventDefault()
+            if( isMouseDown ) {
+                moveStroke({x: e.clientX , y: e.clientY})
+            }
+        };
+        function beginStroke(point) {
+
+            isMouseDown = true
+            clickLoc = windowToCanvas(point.x, point.y)
+        }
+        function windowToCanvas( x , y ) {
+            var bbox = canvas.getBoundingClientRect()
+            return {x:Math.round(x-bbox.left) , y:Math.round(y-bbox.top)}
+        }
+        function moveStroke(point,canvasPoint) {
+
+            context.clearRect(0,0,canvas.width, canvas.height);
+
+            curLoc = canvasPoint?canvasPoint:windowToCanvas( point.x , point.y );
+            
+            context.globalAlpha = 0.4;
+            context.fillStyle = "#f5acac";
+
+            context.fillRect(clickLoc.x , clickLoc.y, curLoc.x-clickLoc.x , curLoc.y-clickLoc.y);
+
+            context.globalAlpha = 1;
+            context.strokeStyle = "#c50e0e";
+            context.strokeRect(clickLoc.x , clickLoc.y, curLoc.x-clickLoc.x , curLoc.y-clickLoc.y);
+        }
+
+        moveStroke({},lr);
+
+        return this;
+      }
+
+      var topLeft = { topLeftX: 175, topLeftY: 130, topLeftScaleXY: "0.35,0.3170731707317073" };
+      var lowerRight = { lowerRightX: 281, lowerRightY: 297, lowerRightScaleXY: "0.562,0.724390243902439" };
+
+      var canvasXY = $.drawCanvas("canvas",500,410,topLeft,lowerRight);
+
+      $("button").on("click", function() {
+        console.log(canvasXY.topLeft,canvasXY.lowerRight);
+      })
+      
+    })
+    </script>
+</html>
