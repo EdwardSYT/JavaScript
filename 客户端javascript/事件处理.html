@@ -3,17 +3,46 @@
         <title>事件处理</title>
         <style>
             ::selection {background:#be0000;color:#fff;}
-            
+            #clock{
+                font:bold 24pt sans;
+                background:#ddf;
+                padding: 10px;
+                border:solid black 2px;
+                border-radius: 10px
+            }
         </style>
     </head>
     <body>
 
-        
-
+    <div style="position:absolute;left:100px;top:100px;" onmousedown="if(event.shiftKey) console.log(this,event)">11</div>
+    
+    <h1>从时钟中拖出时间戳</h1>
+    <span id="clock"></span>
+    <textarea cols="60" rows="20"></textarea>
     </body>
     <script>
 
-        
+        var clock = document.getElementById("clock");
+        var icon = new Image();
+        icon.src = "../images/1.png";
+
+        function displayTime() {
+            var now = new Date();
+            clock.innerHTML = now;
+        }
+        displayTime();
+
+        setInterval(function() {
+            displayTime();
+        }, 1000);
+
+        clock.draggable = true;
+        clock.ondragstart = function(event) {
+            var event = event||windows.event;
+            var dt = event.dataTransfer;
+            dt.setData("Text",Date()+"\n");
+            if(dt.setDragImage) dt.setDragImage(icon,0,0);
+        }
 
     </script>
 </html>

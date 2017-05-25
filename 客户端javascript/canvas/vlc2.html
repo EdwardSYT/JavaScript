@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html>
-    <head lang="zh-CN">
-        <meta charset="UTF-8">
-        <title>爱德华_Edward_vlc</title>
-        <script src="../../jquery-1.11.2.min.js"></script>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <title>爱德华_Edward_vlc</title>
+    <script src="../../jquery-1.11.2.min.js"></script>
 
-    </head>
-    <body>
+</head>
+<body>
 
     <object type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" id="vlc" events="false" width="500" height="410">
-        <param name="mrl" value="rtsp://172.28.0.75:554/user=admin&password=&channel=1&stream=1.sdp?real_stream" />
-        
+        <param name="mrl" value="rtsp://192.168.112.234:554/user=admin&password=&channel=1&stream=1.sdp?real_stream" />
+
         <param name="volume" value="50" />
         <param name="autoplay" value="true" />
         <param name="loop" value="false" />
         <param name="fullscreen" value="true" />
         <param name="controls" value="true" />
-        <param name="wmode" value="transparent">
+        <param name="wmode" value="transparent"></object>
 
+    <object type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" id="vlc" events="false" width="500" height="410">
+        <param name="mrl" value="rtsp://admin:admin@192.168.112.232:554/media/3/0" />
 
-    </object>
+        <param name="volume" value="50" />
+        <param name="autoplay" value="true" />
+        <param name="loop" value="false" />
+        <param name="fullscreen" value="true" />
+        <param name="controls" value="true" />
+        <param name="wmode" value="transparent"></object>
 
-
-
-
-    </body>
-    <script>
-
-    </script>
+</body>
+    <script></script>
 </html>

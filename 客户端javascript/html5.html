@@ -1,0 +1,99 @@
+<!DOCTYPE html><!-- 这是一个HTML5文件 -->
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>爱德华</title>
+        <style>
+            #droptarget {border: solid green 2px;width: 200px;height: 200px;}
+            #droptarget.active {border:solid red 4px;}
+        </style>
+    </head>
+    <body>
+    
+    <input type="file" accept="image/*" multiple onchange="fileinfo(this.files)" />
+    <!-- 
+        accept:允许上传类型； e:承认; 同意; 承兑;接受; 承认; 承担; 承兑;
+        multiple:批量上传 e:多重的; 多个的; 复杂的; 多功能的;
+     -->
+     <div id="droptarget">Drop Image Files Here</div>
+     <br>
+     Select the file to display;
+     <input type="file" onchange="readfile(this.files[0])" />
+     <pre id="output"></pre>
+    </body>
+    <script>
+        // navigator.geolocation.getCurrentPosition(function(pos) {
+        //     var latitude = pos.coords.latitude;
+        //     var longitude = pos.coords.longitude;
+        //     alert("Your position:"+latitude+","+longitude)
+        // })
+        // window.onhashchange(function() {
+            
+        // });
+        function fileinfo(files) {
+            for (var i = 0; i < files.length; i++) {
+                var f = files[i];
+                console.log(f.name,// 只是名字：没有路径
+                            f.size,f.type,// size和type是Blob的属性
+                            f.lastModifiedDate);// 另外一个File对象属性
+            };
+        }
+
+        var getBlobURL = (window.URL && URL.createObjectURL.bind(URL)) || 
+            (window.webkitURL && webkitURL.createObjectURL.bind(webkitURL)) || 
+            window.createObjectURL;
+        var revokeBlobURL = (window.URL && URL.revokeObjectURL.bind(URL)) || 
+            (window.webkitURL && webkitURL.revokeObjectURL.bind(webkitURL)) || 
+            window.revokeObjectURL;
+
+        window.onload = function() {
+            var droptarget = document.getElementById("droptarget");
+            droptarget.ondragenter = function(e) {
+                var types = e.dataTransfer.types;
+                if(!types ||
+                    (types.contains && types.contains("Files")) ||
+                    (types.indexOf && types.indexOf("Files") != -1)) {
+                    droptarget.classList.add("active");
+                    return false;// 阻止默认事件处理
+                }
+            }
+            droptarget.ondragleave = function() {
+                droptarget.classList.remove("active");
+            }
+            droptarget.ondragover = function(e) {return false;}
+            droptarget.ondrop = function(e) {
+                var files = e.dataTransfer.files;
+                for (var i = 0; i < files.length; i++) {
+                    var type = files[i].type;
+                    if(type.substring(0,6) !== "image/") 
+                        continue;
+                    var img = document.createElement("img");
+                    img.src = getBlobURL(files[i]);
+                    console.log(files[i]);
+                    console.log(getBlobURL(files[i]));
+                    img.onload = function() {
+                        this.width = 100;
+                        document.body.appendChild(this);
+                        revokeBlobURL(this.src);// 但是要避免内存泄漏
+                    }
+                }
+                droptarget.classList.remove("active");
+                return false;// 处理完毕
+            }
+        }
+
+        function readfile(f) {
+            var reader = new FileReader();
+            reader.readAsText(f);
+            reader.onload = function() {
+                var text = reader.result;
+                var out = document.getElementById("output");
+                out.innerHTML = "";
+                out.appendChild(document.createTextNode(text));
+            }
+            reader.onerror = function(e) {
+                console.log("Error",e);
+            }
+        }
+    </script>
+</html>

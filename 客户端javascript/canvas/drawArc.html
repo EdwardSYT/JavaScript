@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head lang="zh-CN">
+        <meta charset="UTF-8">
+        <title>爱德华_Edward_freeFallAndColisionTest</title>
+        <script src="../../jquery-1.11.2.min.js"></script>
+        <style>
+            canvas {
+                border: 1px solid #aaa;
+                display: block;
+                margin: 50px auto; 
+            }
+        </style>
+    </head>
+    <body>
+
+    <canvas id="canvas">当前浏览器不支持Canvas，请更换浏览器后再试</canvas>
+
+    </body>
+    <script>
+    $(function() {
+        /**
+         * *
+         * @param  {[string]} domId     [画布id]
+         * @param  {[number]} width     [画布宽]
+         * @param  {[number]} height    [画布高]
+         * @param  {[number]} blankSize [电子围栏个数]
+         * @param  {[number]} wifiSize  [wifi围栏个数]
+         * @param  {[number]} r         [圆的半径，建议80]
+         * @param  {[number]} v         [移动速度，建议10]
+         *
+         * @example drawArc("canvas", 600, 400, 3, 2 ,80, 10);
+         * 
+         * @author Edward.T.SY
+         * @email: 1073774264@qq.com
+         * @date: 2017-03-15
+         */
+        function drawArc(domId, width, height, blankSize, wifiSize ,r, v) {
+            var animate_self,
+                blanks = blankObj(blankSize),
+                wifis = wifiObj(wifiSize);
+
+            function blankObj(size) {
+                var l = [];
+                for (var i = 0; i < size; i++) {
+                    l.push({x:Math.round(Math.random()*100), 
+                        y:Math.round(Math.random()*1000), 
+                        r:r, 
+                        vx:-Math.round(Math.random()*v), 
+                        vy:-Math.round(Math.random()*v), 
+                        color:"#2daeca"});
+                };
+                return l;
+            }
+
+            function wifiObj(size) {
+                var l = [];
+                for (var i = 0; i < size; i++) {
+                    l.push({x:Math.round(Math.random()*1000), 
+                        y:Math.round(Math.random()*100), 
+                        r:r, 
+                        vx:-Math.round(Math.random()*v), 
+                        vy:-Math.round(Math.random()*v), 
+                        color:"#32b16c"});
+                };
+                return l;
+            }
+
+            clearInterval(animate_self);
+
+            var canvas = document.getElementById(domId);
+            canvas.width = width;
+            canvas.height = height;
+            var context = canvas.getContext("2d");
+
+            animate_self = setInterval(function() {
+                context.clearRect(0,0,context.canvas.width,context.canvas.height);
+                for (var i = 0; i < blanks.length; i++) {
+                    draw(context,blanks[i]);
+                };
+                for (var j = 0; j < wifis.length; j++) {
+                    draw(context,wifis[j]);
+                };
+            },40);
+
+            function draw(cxt,ball) {
+                cxt.beginPath();
+                cxt.fillStyle = ball.color;
+                cxt.lineWidth = 3;
+                cxt.arc(ball.x, ball.y, ball.r, 0, 2*Math.PI);
+                cxt.fill();
+
+                cxt.beginPath();
+                cxt.strokeStyle = ball.color;
+                cxt.globalAlpha = 0.6;
+                cxt.arc(ball.x, ball.y, ball.r, 0, 2*Math.PI);
+                cxt.stroke();
+
+                update(ball);
+            }
+
+            // 四边碰撞检测
+            function update(ball) {
+                ball.x += ball.vx;
+                ball.y += ball.vy;
+
+                if(ball.y >= canvas.height-ball.r) {
+                    ball.y = canvas.height-ball.r;
+                    ball.vy = -ball.vy;
+                }
+
+                if(ball.y <= ball.r) {
+                    ball.y = ball.r;
+                    ball.vy = -ball.vy;
+                }
+
+                if(ball.x <= ball.r) {
+                    ball.x = ball.r;
+                    ball.vx = -ball.vx;
+                }
+
+                if(ball.x >= canvas.width-ball.r) {
+                    ball.x = canvas.width-ball.r;
+                    ball.vx = -ball.vx;
+                }
+            }
+        }
+        drawArc("canvas", 600, 400, 3, 2 ,80, 10);
+
+    })
+    </script>
+</html>
