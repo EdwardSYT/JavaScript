@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head lang="zh-CN">
+        <meta charset="UTF-8">
+        <title>爱德华_Edward_星空飞行穿梭</title>
+        <script src="../../jquery-1.11.2.min.js"></script>
+        <style>
+            canvas {
+                border: 1px solid #aaa;
+                display: block;
+                margin: 50px auto; 
+            }
+        </style>
+    </head>
+    <body>
+
+    <canvas id="canvas">当前浏览器不支持Canvas，请更换浏览器后再试</canvas>
+
+    </body>
+    <script>
+    $(function() {
+
+        var canvas = document.getElementById("canvas");
+        var circles = [];
+        canvas.width = 800;
+        canvas.height = 800;
+
+        var context = canvas.getContext("2d");
+        // draw(context,obj);
+        for (var i = 0; i < 100; i++) {
+            addRandomCircle();
+        };
+
+        for (var j = 0; j < circles.length; j++) {
+            draw(context,circles[j]);
+        };
+
+        function draw(cxt,ball) {
+            cxt.beginPath();
+            cxt.fillStyle = ball.color;
+            cxt.globalAlpha = 0.8;
+            cxt.lineWidth = 3;
+            cxt.arc(ball.x, ball.y, ball.r, 0, 2*Math.PI);
+            cxt.fill();
+
+            cxt.beginPath();
+            cxt.strokeStyle = ball.color;
+            cxt.globalAlpha = 0.2;
+            cxt.lineWidth = 8;
+            cxt.arc(ball.x, ball.y, ball.r, 0, 2*Math.PI);
+            cxt.stroke();
+
+            cxt.beginPath();
+            //设置字体样式
+            cxt.font = "15px Courier New";
+            cxt.globalAlpha = 0.4;
+            // cxt.lineWidth = 2;
+            //设置字体颜色
+            cxt.fillStyle = "black";
+            //从坐标点(50,50)开始绘制文字
+            cxt.fillText("三维世界canvas", ball.x+15, ball.y+6);
+        }
+
+        function addRandomCircle() {
+            
+            // var colors = ["green", "blue", "red", "yellow", "magenta", "orange", "brown", "purple", "pink"];// 随机的颜色.
+            // var color = colors[randomFromTo(0, 8)];
+
+            var obj = {
+                "color":getRandomColor(),
+                "x":randomFromTo(0, canvas.width),
+                "y":randomFromTo(0, canvas.height),
+                "r":8
+            }
+            // 保存到数组.
+            circles.push(obj);
+        }
+
+        function randomFromTo(from, to) {
+          return Math.floor(Math.random() * (to - from + 1) + from);
+        }
+
+        function getRandomColor() {
+            return (function(m,s,c){   
+                return (c ? arguments.callee(m,s,c-1) : '#') +   s[m.floor(m.random() * 16)];
+            })(Math,'0123456789abcdef',5);   
+        }
+
+    })
+    </script>
+</html>
