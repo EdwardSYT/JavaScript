@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head lang="zh-CN">
+        <meta charset="UTF-8">
+        <title>爱德华_Edward_星空飞行穿梭</title>
+        <script src="jquery-1.11.2.min.js"></script>
+        <script src="fly.js"></script>
+        <style>
+            canvas {
+                
+                
+            }
+        </style>
+    </head>
+    <body>
+
+        <canvas id="canvas" style="display: block; margin: 50px auto;">
+            当前浏览器不支持Canvas，请更换浏览器后再试
+        </canvas>
+
+    </body>
+    <script>
+        $(function() {
+            var datas = [111,222,333,444,555,666,777,888,999,000];
+            showFly("canvas",1600,800,datas,function(val) {
+                alert(val);
+            });
+
+        })
+    </script>
+</html>

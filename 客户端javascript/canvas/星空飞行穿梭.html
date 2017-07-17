@@ -28,7 +28,7 @@
 
         var context = canvas.getContext("2d");
         // draw(context,obj);
-        for (var i = 0; i < 100; i++) {
+        for (var i = 0; i < 50; i++) {
             addRandomCircle();
         };
 
@@ -161,8 +161,10 @@
             }
 
             if(ball.x<=0 || ball.y<=0 || ball.x>=w || ball.y>=h) {
-                ball.x = randomFromTo(canvas.width/2-1, canvas.width/2+1);
-                ball.y = randomFromTo(canvas.height/2-1, canvas.height/2+1);
+                // ball.x = randomFromTo(canvas.width/2-1, canvas.width/2+1);
+                // ball.y = randomFromTo(canvas.height/2-1, canvas.height/2+1);
+                ball.x = randomFromTo(canvas.width/2-canvas.width/3, canvas.width/2+canvas.width/3);
+                ball.y = randomFromTo(canvas.height/2-canvas.width/3, canvas.height/2+canvas.width/3);
                 ball.speedX = speedX;
                 ball.speedY = speedY;
                 ball.alpha1 = 0;
@@ -219,8 +221,10 @@
                 "color":getRandomColor(),
                 // "x":randomFromTo(canvas.width/4, canvas.width/4*3),
                 // "y":randomFromTo(canvas.height/4, canvas.height/4*3),
-                "x":randomFromTo(canvas.width/2-1, canvas.width/2+1),
-                "y":randomFromTo(canvas.height/2-1, canvas.height/2+1),
+                // "x":randomFromTo(canvas.width/2-1, canvas.width/2+1),
+                // "y":randomFromTo(canvas.height/2-1, canvas.height/2+1),
+                "x":randomFromTo(0, canvas.width),
+                "y":randomFromTo(0, canvas.height),
                 "speedX":speedX,
                 "speedY":speedY,
                 "val":randomFromTo(0,1)?"爱德华Edward":"",

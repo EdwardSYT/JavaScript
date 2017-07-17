@@ -7,10 +7,11 @@
 6、熟悉闭包、回调函数、函数式编程、“链式”解构赋值以及插件封装等js底层基础技术；
 7、使用过原生svg、canvas解决过可视化需求；
 8、有一定的移动端开发经验；
-9、运用过以下css/js插件和可视化引擎：bootstrap、ztree、echarts、d3、templet、jquery、three等；
+9、运用过以下css/js插件和可视化引擎：bootstrap、ztree、echarts、d3、templet、jquery、three、百度地图API等；
 10、有解决浏览器兼容问题的经验；
 11、有前端工程化开发经验，熟练使用VUE以及了解前端数据双向绑定原理；
-12、有后端JavaWeb开发工作经验者最佳。
+12、熟悉WampServer、NodeJS、Gulp、Nginx、SVN、GitHub等前端研发相关辅助工具；
+13、有后端JavaWeb开发工作经验者最佳。
 
 特殊要求：
 1、有WebGIS离线地图开发经验（了解瓦片与坐标构建原理）；
@@ -21,3 +22,12 @@
 
 
 以ECMAScript为基础研究原生javascript。研究WebGIS离线地图开发，解决内网对GIS系统的需求。在WebGL、OpenGL规范下，以three.js为研究对象，以实现web端3D与VR的可视化实现。
+
+
+
+公司招聘修改：
+1、纯Web前端研发经验至少4年，熟练使用JavaScript，对ECMAScript有一定的认知，熟悉闭包、回调函数、函数式编程、“链式”解构赋值以及插件封装等js底层基础技术、有解决浏览器兼容问题的经验；
+2、熟悉前后端分离开发模式，能合理的运用ajax来调用不同restful接口；
+3、熟练使用html5、css3优化前端DOM，有一定的移动端开发经验，使用过原生svg、canvas解决过可视化需求，运用过以下css/js插件和可视化引擎：bootstrap、ztree、echarts、d3、templet、jquery、three、百度地图API等；
+4、有前端工程化开发经验，熟练使用VUE以及了解前端数据双向绑定原理，熟悉WampServer、NodeJS、Gulp、Nginx、SVN、GitHub等前端研发相关辅助工具；
+5、有后端JavaWeb开发工作经验者最佳。
