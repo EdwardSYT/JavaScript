@@ -1,33 +1,33 @@
-»ù±¾ÒªÇó£º
-1¡¢´¿WebÇ°¶Ë¿ª·¢¹¤×÷¾­ÑéÖÁÉÙ4Äê£»
-2¡¢ÊìÁ·Ê¹ÓÃJavaScript£»
-3¡¢¶ÔECMAScriptÓÐÒ»¶¨µÄÈÏÖª£»
-4¡¢ÊìÁ·Ê¹ÓÃhtml5¡¢css3ÓÅ»¯Ç°¶ËDOM£»
-5¡¢ÊìÏ¤Ç°ºó¶Ë·ÖÀë¿ª·¢Ä£Ê½£¬ÄÜºÏÀíµÄÔËÓÃajaxÀ´µ÷ÓÃ²»Í¬restful½Ó¿Ú£»
-6¡¢ÊìÏ¤±Õ°ü¡¢»Øµ÷º¯Êý¡¢º¯ÊýÊ½±à³Ì¡¢¡°Á´Ê½¡±½â¹¹¸³ÖµÒÔ¼°²å¼þ·â×°µÈjsµ×²ã»ù´¡¼¼Êõ£»
-7¡¢Ê¹ÓÃ¹ýÔ­Éúsvg¡¢canvas½â¾ö¹ý¿ÉÊÓ»¯ÐèÇó£»
-8¡¢ÓÐÒ»¶¨µÄÒÆ¶¯¶Ë¿ª·¢¾­Ñé£»
-9¡¢ÔËÓÃ¹ýÒÔÏÂcss/js²å¼þºÍ¿ÉÊÓ»¯ÒýÇæ£ºbootstrap¡¢ztree¡¢echarts¡¢d3¡¢templet¡¢jquery¡¢three¡¢°Ù¶ÈµØÍ¼APIµÈ£»
-10¡¢ÓÐ½â¾öä¯ÀÀÆ÷¼æÈÝÎÊÌâµÄ¾­Ñé£»
-11¡¢ÓÐÇ°¶Ë¹¤³Ì»¯¿ª·¢¾­Ñé£¬ÊìÁ·Ê¹ÓÃVUEÒÔ¼°ÁË½âÇ°¶ËÊý¾ÝË«Ïò°ó¶¨Ô­Àí£»
-12¡¢ÊìÏ¤WampServer¡¢NodeJS¡¢Gulp¡¢Nginx¡¢SVN¡¢GitHubµÈÇ°¶ËÑÐ·¢Ïà¹Ø¸¨Öú¹¤¾ß£»
-13¡¢ÓÐºó¶ËJavaWeb¿ª·¢¹¤×÷¾­ÑéÕß×î¼Ñ¡£
+åŸºæœ¬è¦æ±‚ï¼š
+1ã€çº¯Webå‰ç«¯å¼€å‘å·¥ä½œç»éªŒè‡³å°‘4å¹´ï¼›
+2ã€ç†Ÿç»ƒä½¿ç”¨JavaScriptï¼›
+3ã€å¯¹ECMAScriptæœ‰ä¸€å®šçš„è®¤çŸ¥ï¼›
+4ã€ç†Ÿç»ƒä½¿ç”¨html5ã€css3ä¼˜åŒ–å‰ç«¯DOMï¼›
+5ã€ç†Ÿæ‚‰å‰åŽç«¯åˆ†ç¦»å¼€å‘æ¨¡å¼ï¼Œèƒ½åˆç†çš„è¿ç”¨ajaxæ¥è°ƒç”¨ä¸åŒrestfulæŽ¥å£ï¼›
+6ã€ç†Ÿæ‚‰é—­åŒ…ã€å›žè°ƒå‡½æ•°ã€å‡½æ•°å¼ç¼–ç¨‹ã€â€œé“¾å¼â€è§£æž„èµ‹å€¼ä»¥åŠæ’ä»¶å°è£…ç­‰jsåº•å±‚åŸºç¡€æŠ€æœ¯ï¼›
+7ã€ä½¿ç”¨è¿‡åŽŸç”Ÿsvgã€canvasè§£å†³è¿‡å¯è§†åŒ–éœ€æ±‚ï¼›
+8ã€æœ‰ä¸€å®šçš„ç§»åŠ¨ç«¯å¼€å‘ç»éªŒï¼›
+9ã€è¿ç”¨è¿‡ä»¥ä¸‹css/jsæ’ä»¶å’Œå¯è§†åŒ–å¼•æ“Žï¼šbootstrapã€ztreeã€echartsã€d3ã€templetã€jqueryã€threeã€ç™¾åº¦åœ°å›¾APIç­‰ï¼›
+10ã€æœ‰è§£å†³æµè§ˆå™¨å…¼å®¹é—®é¢˜çš„ç»éªŒï¼›
+11ã€æœ‰å‰ç«¯å·¥ç¨‹åŒ–å¼€å‘ç»éªŒï¼Œç†Ÿç»ƒä½¿ç”¨VUEä»¥åŠäº†è§£å‰ç«¯æ•°æ®åŒå‘ç»‘å®šåŽŸç†ï¼›
+12ã€ç†Ÿæ‚‰WampServerã€NodeJSã€Gulpã€Nginxã€SVNã€GitHubç­‰å‰ç«¯ç ”å‘ç›¸å…³è¾…åŠ©å·¥å…·ï¼›
+13ã€æœ‰åŽç«¯JavaWebå¼€å‘å·¥ä½œç»éªŒè€…æœ€ä½³ã€‚
 
-ÌØÊâÒªÇó£º
-1¡¢ÓÐWebGISÀëÏßµØÍ¼¿ª·¢¾­Ñé£¨ÁË½âÍßÆ¬Óë×ø±ê¹¹½¨Ô­Àí£©£»
-2¡¢ÁË½âWebGL¡¢OpenGL£¬ÊìÁ·Ê¹ÓÃthree.js¹¹½¨3D»·¾³£¬ÄÜ¶Ô3D³¡¾°µÄÎïÌå½øÐÐ½»»¥Ê½²Ù×÷£¬ÓÐ×÷Æ·×î¼Ñ£»
-3¡¢ÓÐÍ¼Ïñ»¯±à³ÌÓëÍ¼ÐÎ»¯Ëã·¨Ïà¹Ø¾­Ñé£»
-4¡¢ÊìÁ·Ê¹ÓÃ3D Studio Max¹¤¾ß¹¹½¨3DÔ­ÐÍÍ¼ÐÎobjÎÄ¼þ£¬ÓÐ×÷Æ·×î¼Ñ¡£
-
-
-
-ÒÔECMAScriptÎª»ù´¡ÑÐ¾¿Ô­Éújavascript¡£ÑÐ¾¿WebGISÀëÏßµØÍ¼¿ª·¢£¬½â¾öÄÚÍø¶ÔGISÏµÍ³µÄÐèÇó¡£ÔÚWebGL¡¢OpenGL¹æ·¶ÏÂ£¬ÒÔthree.jsÎªÑÐ¾¿¶ÔÏó£¬ÒÔÊµÏÖweb¶Ë3DÓëVRµÄ¿ÉÊÓ»¯ÊµÏÖ¡£
+ç‰¹æ®Šè¦æ±‚ï¼š
+1ã€æœ‰WebGISç¦»çº¿åœ°å›¾å¼€å‘ç»éªŒï¼ˆäº†è§£ç“¦ç‰‡ä¸Žåæ ‡æž„å»ºåŽŸç†ï¼‰ï¼›
+2ã€äº†è§£WebGLã€OpenGLï¼Œç†Ÿç»ƒä½¿ç”¨three.jsæž„å»º3DçŽ¯å¢ƒï¼Œèƒ½å¯¹3Dåœºæ™¯çš„ç‰©ä½“è¿›è¡Œäº¤äº’å¼æ“ä½œï¼Œæœ‰ä½œå“æœ€ä½³ï¼›
+3ã€æœ‰å›¾åƒåŒ–ç¼–ç¨‹ä¸Žå›¾å½¢åŒ–ç®—æ³•ç›¸å…³ç»éªŒï¼›
+4ã€ç†Ÿç»ƒä½¿ç”¨3D Studio Maxå·¥å…·æž„å»º3DåŽŸåž‹å›¾å½¢objæ–‡ä»¶ï¼Œæœ‰ä½œå“æœ€ä½³ã€‚
 
 
 
-¹«Ë¾ÕÐÆ¸ÐÞ¸Ä£º
-1¡¢´¿WebÇ°¶ËÑÐ·¢¾­ÑéÖÁÉÙ4Äê£¬ÊìÁ·Ê¹ÓÃJavaScript£¬¶ÔECMAScriptÓÐÒ»¶¨µÄÈÏÖª£¬ÊìÏ¤±Õ°ü¡¢»Øµ÷º¯Êý¡¢º¯ÊýÊ½±à³Ì¡¢¡°Á´Ê½¡±½â¹¹¸³ÖµÒÔ¼°²å¼þ·â×°µÈjsµ×²ã»ù´¡¼¼Êõ¡¢ÓÐ½â¾öä¯ÀÀÆ÷¼æÈÝÎÊÌâµÄ¾­Ñé£»
-2¡¢ÊìÏ¤Ç°ºó¶Ë·ÖÀë¿ª·¢Ä£Ê½£¬ÄÜºÏÀíµÄÔËÓÃajaxÀ´µ÷ÓÃ²»Í¬restful½Ó¿Ú£»
-3¡¢ÊìÁ·Ê¹ÓÃhtml5¡¢css3ÓÅ»¯Ç°¶ËDOM£¬ÓÐÒ»¶¨µÄÒÆ¶¯¶Ë¿ª·¢¾­Ñé£¬Ê¹ÓÃ¹ýÔ­Éúsvg¡¢canvas½â¾ö¹ý¿ÉÊÓ»¯ÐèÇó£¬ÔËÓÃ¹ýÒÔÏÂcss/js²å¼þºÍ¿ÉÊÓ»¯ÒýÇæ£ºbootstrap¡¢ztree¡¢echarts¡¢d3¡¢templet¡¢jquery¡¢three¡¢°Ù¶ÈµØÍ¼APIµÈ£»
-4¡¢ÓÐÇ°¶Ë¹¤³Ì»¯¿ª·¢¾­Ñé£¬ÊìÁ·Ê¹ÓÃVUEÒÔ¼°ÁË½âÇ°¶ËÊý¾ÝË«Ïò°ó¶¨Ô­Àí£¬ÊìÏ¤WampServer¡¢NodeJS¡¢Gulp¡¢Nginx¡¢SVN¡¢GitHubµÈÇ°¶ËÑÐ·¢Ïà¹Ø¸¨Öú¹¤¾ß£»
-5¡¢ÓÐºó¶ËJavaWeb¿ª·¢¹¤×÷¾­ÑéÕß×î¼Ñ¡£
+ä»¥ECMAScriptä¸ºåŸºç¡€ç ”ç©¶åŽŸç”Ÿjavascriptã€‚ç ”ç©¶WebGISç¦»çº¿åœ°å›¾å¼€å‘ï¼Œè§£å†³å†…ç½‘å¯¹GISç³»ç»Ÿçš„éœ€æ±‚ã€‚åœ¨WebGLã€OpenGLè§„èŒƒä¸‹ï¼Œä»¥three.jsä¸ºç ”ç©¶å¯¹è±¡ï¼Œä»¥å®žçŽ°webç«¯3Dä¸ŽVRçš„å¯è§†åŒ–å®žçŽ°ã€‚
+
+
+
+å…¬å¸æ‹›è˜ä¿®æ”¹ï¼š
+1ã€çº¯Webå‰ç«¯ç ”å‘ç»éªŒè‡³å°‘4å¹´ï¼Œç†Ÿç»ƒä½¿ç”¨JavaScriptï¼Œå¯¹ECMAScriptæœ‰ä¸€å®šçš„è®¤çŸ¥ï¼Œç†Ÿæ‚‰é—­åŒ…ã€å›žè°ƒå‡½æ•°ã€å‡½æ•°å¼ç¼–ç¨‹ã€â€œé“¾å¼â€è§£æž„èµ‹å€¼ä»¥åŠæ’ä»¶å°è£…ç­‰jsåº•å±‚åŸºç¡€æŠ€æœ¯ã€æœ‰è§£å†³æµè§ˆå™¨å…¼å®¹é—®é¢˜çš„ç»éªŒï¼›
+2ã€ç†Ÿæ‚‰å‰åŽç«¯åˆ†ç¦»å¼€å‘æ¨¡å¼ï¼Œèƒ½åˆç†çš„è¿ç”¨ajaxæ¥è°ƒç”¨ä¸åŒrestfulæŽ¥å£ï¼›
+3ã€ç†Ÿç»ƒä½¿ç”¨html5ã€css3ä¼˜åŒ–å‰ç«¯DOMï¼Œæœ‰ä¸€å®šçš„ç§»åŠ¨ç«¯å¼€å‘ç»éªŒï¼Œä½¿ç”¨è¿‡åŽŸç”Ÿsvgã€canvasè§£å†³è¿‡å¯è§†åŒ–éœ€æ±‚ï¼Œè¿ç”¨è¿‡ä»¥ä¸‹css/jsæ’ä»¶å’Œå¯è§†åŒ–å¼•æ“Žï¼šbootstrapã€ztreeã€echartsã€d3ã€templetã€jqueryã€threeã€ç™¾åº¦åœ°å›¾APIç­‰ï¼›
+4ã€æœ‰å‰ç«¯å·¥ç¨‹åŒ–å¼€å‘ç»éªŒï¼Œç†Ÿç»ƒä½¿ç”¨VUEä»¥åŠäº†è§£å‰ç«¯æ•°æ®åŒå‘ç»‘å®šåŽŸç†ï¼Œç†Ÿæ‚‰WampServerã€NodeJSã€Gulpã€Nginxã€SVNã€GitHubç­‰å‰ç«¯ç ”å‘ç›¸å…³è¾…åŠ©å·¥å…·ï¼›
+5ã€æœ‰åŽç«¯JavaWebå¼€å‘å·¥ä½œç»éªŒè€…æœ€ä½³ã€‚
